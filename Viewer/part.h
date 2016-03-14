@@ -8,20 +8,25 @@ class Mesh;
 
 class Part
 {
+	friend class PartManager;
 private:
 	Mesh *mesh;
 	Matrixh *matrix;
 	std::vector<Part*> subParts;
 	float color[4];
 
-public:
+protected:
 	Part(Mesh* m=NULL);
 	~Part();
 
+public:
+
 	void setMesh(Mesh* m);
+	void createEmptyMesh();
 	Mesh* getMesh() { return mesh; }
 
 	void setMatrix(Matrixh *mat);
+	void setMatrix(const Matrixh& mat);
 	Matrixh* getMatrix() { return matrix; }
 
 	void addSubPart(Part* part);

@@ -1,5 +1,6 @@
 #include "partmanager.h"
 #include "part.h"
+#include "snowman.h"
 
 PartManager* PartManager::instance = NULL;
 
@@ -16,11 +17,23 @@ PartManager::~PartManager()
 
 Part* PartManager::newPart(bool subPart)
 {
+	/* if subPart = true, the part is not registered by the manager
+	 the user have to take care of deallocation */
+
 	Part *nouv = new Part;
 	if(subPart == false)
 		parts.push_back(nouv);
 	return nouv;
 }
+
+SnowMan* PartManager::newSnowManPart(bool subPart)
+{
+	SnowMan* nouv = new SnowMan;
+	if(subPart == false)
+		parts.push_back(nouv);
+	return nouv;
+}
+
 
 void PartManager::freePart(Part *p)
 {

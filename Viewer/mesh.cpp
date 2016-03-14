@@ -108,6 +108,7 @@ void Mesh::subdivideTriangle(Point3f a, Point3f b, Point3f c, int n)
 
 void Mesh::createCube()
 {
+	// create a cube inscrit in a sphere of radius 1 centered in the origin
 	coordinates.clear();
 	coordinates.reserve(6*2*3*3);
 	Point3f a = {-1,1, 1};

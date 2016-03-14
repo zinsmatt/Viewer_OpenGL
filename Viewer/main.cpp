@@ -6,6 +6,8 @@
 #include "meshmanager.h"
 #include "partmanager.h"
 #include "part.h"
+#include "snowman.h"
+
 using namespace std;
 
 int main()
@@ -16,28 +18,27 @@ int main()
 	//MeshManager *manager = MeshManager::getInstance();
 	PartManager *manager = PartManager::getInstance();
 
-	Part *sphere = manager->newPart(false);
-	sphere->getMesh()->createSphere(5);
-	sphere->setColor(1.0,0.0,0.0);
+	//Part *sphere = manager->newPart(false);
+	//sphere->getMesh()->createSphere(3);
+	//sphere->setColor(1.0,0.0,0.0);
+	//
+	//Mesh *sphereMesh = sphere->getMesh();
+	//
+	//std::vector<Part*> ballons;
+	//for(int iter=0;iter<50;iter++)
+	//{
+	//	ballons.push_back(manager->newPart(false));
+	//	ballons[ballons.size()-1]->setMesh(sphereMesh);
+	//	ballons[ballons.size()-1]->getMatrix()->setTranslation(-5+rand()%10,-5+rand()%10,-5+rand()%10);
+	//	ballons[ballons.size()-1]->setColor((float)(rand()%100)/100, (float)(rand()%100)/100, (float)(rand()%100)/100);
+	//}
+	//
+	//Part *cube = manager->newPart();
+	//cube->getMesh()->createCube();
+	//cube->getMatrix()->setTranslation(2.0,2.0,0.0);
+	//cube->setColor(1.0,1.0,0.0);
 
-	Mesh *sphereMesh = sphere->getMesh();
-
-	std::vector<Part*> ballons;
-	for(int iter=0;iter<50;iter++)
-	{
-		ballons.push_back(manager->newPart(false));
-		ballons[ballons.size()-1]->setMesh(sphereMesh);
-		ballons[ballons.size()-1]->getMatrix()->setTranslation(-5+rand()%10,-5+rand()%10,-5+rand()%10);
-		ballons[ballons.size()-1]->setColor((float)(rand()%100)/100, (float)(rand()%100)/100, (float)(rand()%100)/100);
-	}
-
-
-	Part *cube = manager->newPart();
-	cube->getMesh()->createCube();
-	cube->getMatrix()->setTranslation(2.0,2.0,0.0);
-	cube->setColor(1.0,1.0,0.0);
-
-
+	SnowMan *man = manager->newSnowManPart();
 
 	Viewer *viewer = Viewer::getInstance(600,600,"Viewer 3D");
 //	viewer->clear();

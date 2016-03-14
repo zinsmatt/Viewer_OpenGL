@@ -77,7 +77,7 @@ void Matrixh::setTranslation(float x, float y, float z)
 }
 
 void Matrixh::setRotationX(float angle)
-{
+{	// angle in radians
 	rowMajorValues[0] = 1;
 	rowMajorValues[1] = 0;
 	rowMajorValues[2] = 0;
@@ -95,7 +95,7 @@ void Matrixh::setRotationX(float angle)
 }
 
 void Matrixh::setRotationY(float angle)
-{
+{	// angle in radians
 	rowMajorValues[0] = cos(angle);
 	rowMajorValues[1] = 0;
 	rowMajorValues[2] = sin(angle);
@@ -113,7 +113,7 @@ void Matrixh::setRotationY(float angle)
 }
 
 void Matrixh::setRotationZ(float angle)
-{
+{	// angle in radians
 	rowMajorValues[0] = cos(angle);
 	rowMajorValues[1] = -sin(angle);
 	rowMajorValues[2] = 0;

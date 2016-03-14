@@ -4,15 +4,13 @@
 #include "matrixh.h"
 #include "mesh.h"
 #include "viewer.h"
-Part::Part(Mesh* m)
+Part::Part(Mesh* m) : mesh(NULL)
 {
 	color[0] = color[1] = color[2] = 1.0;
 	color[3] = 1;
 	matrix = new Matrixh;
 	if(m != NULL)
 		mesh = m;
-	else
-		mesh = MeshManager::getInstance()->newMesh();
 }
 
 Part::~Part()
@@ -23,6 +21,11 @@ Part::~Part()
 		delete subParts[iter];
 	}
 	//do not delete the mesh because can be shared between several parts
+}
+
+void Part::createEmptyMesh()
+{
+	mesh = MeshManager::getInstance()->newMesh();
 }
 
 void Part::setMesh(Mesh *m)
@@ -42,6 +45,14 @@ void Part::setMatrix(Matrixh *mat)
 	}
 	matrix = mat;
 }
+
+void Part::setMatrix(const Matrixh& mat)
+{
+	if(matrix == NULL)
+		matrix = new Matrixh;
+	*matrix = mat;
+}
+
 
 void Part::addSubPart(Part *part)
 {

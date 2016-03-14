@@ -21,3 +21,5 @@ target_link_libraries(${PROJECT_NAME} glfw ${GLFW_LIBRARIES})
 
 
 set(CMAKE_CXX_FLAGS "-std=c++11")
+
+# pour mettre en debug -DCMAKE_BUILD_TYPE=Debug en argument a cmake

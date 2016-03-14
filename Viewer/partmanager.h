@@ -3,6 +3,7 @@
 #include <vector>
 
 class Part;
+class SnowMan;
 
 class PartManager
 {
@@ -12,6 +13,8 @@ public:
 
 	Part* newPart(bool subPart = false);
 	void freePart(Part *p);
+
+	SnowMan* newSnowManPart(bool subPart = false);
 
 	void draw();
 	void draw3();
