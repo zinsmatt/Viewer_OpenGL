@@ -8,23 +8,23 @@
       <Option virtualFolders="CMake Files\;" />
       <Build>
       <Target title="all">
-         <Option working_dir="/home/matthieu/Documents/viewer/Viewer-build" />
+         <Option working_dir="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build" />
          <Option type="4" />
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/matthieu/Documents/viewer/Viewer-build/Makefile&quot;  VERBOSE=1 all" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/matthieu/Documents/viewer/Viewer-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/matthieu/Documents/viewer/Viewer-build/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/matthieu/Documents/viewer/Viewer-build/Makefile&quot;  VERBOSE=1 clean" />
+            <Build command="/usr/bin/make -f &quot;/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
       <Target title="Viewer">
-         <Option output="/home/matthieu/Documents/viewer/Viewer-build/Viewer" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/matthieu/Documents/viewer/Viewer-build" />
+         <Option output="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Viewer" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build" />
          <Option object_output="./" />
          <Option type="1" />
          <Option compiler="gcc" />
          <Compiler>
-            <Add directory="/home/matthieu/Documents/viewer/Viewer/usr/include/GLFW" />
+            <Add directory="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/usr/include/GLFW" />
             <Add directory="/usr/include" />
             <Add directory="/usr/include/c++/4.8" />
             <Add directory="/usr/include/c++/4.8/backward" />
@@ -35,20 +35,20 @@
             <Add directory="/usr/local/include" />
          </Compiler>
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/matthieu/Documents/viewer/Viewer-build/Makefile&quot;  VERBOSE=1 Viewer" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/matthieu/Documents/viewer/Viewer-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/matthieu/Documents/viewer/Viewer-build/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/matthieu/Documents/viewer/Viewer-build/Makefile&quot;  VERBOSE=1 clean" />
+            <Build command="/usr/bin/make -f &quot;/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Makefile&quot;  VERBOSE=1 Viewer" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
       <Target title="Viewer/fast">
-         <Option output="/home/matthieu/Documents/viewer/Viewer-build/Viewer" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/matthieu/Documents/viewer/Viewer-build" />
+         <Option output="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Viewer" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build" />
          <Option object_output="./" />
          <Option type="1" />
          <Option compiler="gcc" />
          <Compiler>
-            <Add directory="/home/matthieu/Documents/viewer/Viewer/usr/include/GLFW" />
+            <Add directory="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/usr/include/GLFW" />
             <Add directory="/usr/include" />
             <Add directory="/usr/include/c++/4.8" />
             <Add directory="/usr/include/c++/4.8/backward" />
@@ -59,64 +59,64 @@
             <Add directory="/usr/local/include" />
          </Compiler>
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/matthieu/Documents/viewer/Viewer-build/Makefile&quot;  VERBOSE=1 Viewer/fast" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/matthieu/Documents/viewer/Viewer-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/matthieu/Documents/viewer/Viewer-build/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/matthieu/Documents/viewer/Viewer-build/Makefile&quot;  VERBOSE=1 clean" />
+            <Build command="/usr/bin/make -f &quot;/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Makefile&quot;  VERBOSE=1 Viewer/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
       <Target title="rebuild_cache">
-         <Option working_dir="/home/matthieu/Documents/viewer/Viewer-build" />
+         <Option working_dir="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build" />
          <Option type="4" />
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/matthieu/Documents/viewer/Viewer-build/Makefile&quot;  VERBOSE=1 rebuild_cache" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/matthieu/Documents/viewer/Viewer-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/matthieu/Documents/viewer/Viewer-build/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/matthieu/Documents/viewer/Viewer-build/Makefile&quot;  VERBOSE=1 clean" />
+            <Build command="/usr/bin/make -f &quot;/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Makefile&quot;  VERBOSE=1 rebuild_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
       </Build>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/main.cpp">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/main.cpp">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/matrixh.cpp">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/matrixh.cpp">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/mesh.cpp">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/mesh.cpp">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/meshmanager.cpp">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/meshmanager.cpp">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/part.cpp">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/part.cpp">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/partmanager.cpp">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/partmanager.cpp">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/point.cpp">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/point.cpp">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/vector.cpp">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/vector.cpp">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/viewer.cpp">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/viewer.cpp">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/viewer3.cpp">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/viewer3.cpp">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/matrixh.h">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/matrixh.h">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/mesh.h">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/mesh.h">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/meshmanager.h">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/meshmanager.h">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/part.h">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/part.h">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/partmanager.h">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/partmanager.h">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/point.h">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/point.h">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/utility.h">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/utility.h">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/vector.h">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/vector.h">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/viewer.h">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/viewer.h">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/viewer3.h">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/viewer3.h">
       </Unit>
-      <Unit filename="/home/matthieu/Documents/viewer/Viewer/CMakeLists.txt">
+      <Unit filename="/home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer/CMakeLists.txt">
           <Option virtualFolder="CMake Files\" />
       </Unit>
    </Project>

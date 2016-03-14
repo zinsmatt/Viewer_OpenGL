@@ -50,10 +50,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/matthieu/Documents/viewer/Viewer
+CMAKE_SOURCE_DIR = /home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/matthieu/Documents/viewer/Viewer-build
+CMAKE_BINARY_DIR = /home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build
 
 #=============================================================================
 # Target rules for target CMakeFiles/Viewer.dir
@@ -62,7 +62,7 @@ CMAKE_BINARY_DIR = /home/matthieu/Documents/viewer/Viewer-build
 CMakeFiles/Viewer.dir/all:
 	$(MAKE) -f CMakeFiles/Viewer.dir/build.make CMakeFiles/Viewer.dir/depend
 	$(MAKE) -f CMakeFiles/Viewer.dir/build.make CMakeFiles/Viewer.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/matthieu/Documents/viewer/Viewer-build/CMakeFiles  1 2 3 4 5 6 7 8 9 10
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/CMakeFiles  1 2 3 4 5 6 7 8 9 10
 	@echo "Built target Viewer"
 .PHONY : CMakeFiles/Viewer.dir/all
 
@@ -72,9 +72,9 @@ all: CMakeFiles/Viewer.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Viewer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/matthieu/Documents/viewer/Viewer-build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/CMakeFiles 10
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Viewer.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/matthieu/Documents/viewer/Viewer-build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/matthieu/Documents/Viewer/Viewer_OpenGL/Viewer-build/CMakeFiles 0
 .PHONY : CMakeFiles/Viewer.dir/rule
 
 # Convenience name for target.
