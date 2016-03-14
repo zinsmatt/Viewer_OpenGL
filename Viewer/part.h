@@ -12,6 +12,7 @@ private:
 	Mesh *mesh;
 	Matrixh *matrix;
 	std::vector<Part*> subParts;
+	float color[4];
 
 public:
 	Part(Mesh* m=NULL);
@@ -28,6 +29,10 @@ public:
 
 	void draw(Matrixh mat);
 	void draw3();
+
+	void setColor(float r, float g, float b) {
+		color[0] = r; color[1] = g; color[2] = b;
+	}
 };
 
 #endif // PART_H

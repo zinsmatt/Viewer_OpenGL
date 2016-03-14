@@ -1,1 +1,2 @@
-Viewer-build
+/Viewer-build/*
+*.cpp
