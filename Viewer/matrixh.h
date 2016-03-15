@@ -35,11 +35,6 @@ public:
 	void setRotationZ(float angle);
 	void setScale(float sx, float sy, float sz);
 
-
-	//void get(float* pt) const { for(int i=0;i<16;i++) pt[i] = rowMajorValues[i]; }
-	//void set(int i, int j, float val) { if(j<4 && i<4) rowMajorValues[i*4+j] = val; }
-	//void set(const float *val);
-
 	const float* toColMajorMatrix();
 	void fromColMajorMatrix(const float* pt);
 

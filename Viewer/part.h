@@ -9,15 +9,15 @@ class Mesh;
 class Part
 {
 	friend class PartManager;
-private:
+
+protected:
 	Mesh *mesh;
 	Matrixh *matrix;
 	std::vector<Part*> subParts;
 	float color[4];
 
-protected:
 	Part(Mesh* m=NULL);
-	~Part();
+	virtual ~Part();
 
 public:
 

@@ -19,6 +19,10 @@ public:
 	void draw();
 	void draw3();
 
+	std::vector<Part*>::iterator getStartIterator() { return parts.begin(); }
+	std::vector<Part*>::iterator getEndIterator() { return parts.end(); }
+
+
 private:
 	static PartManager* instance;
 

@@ -58,6 +58,7 @@ private:
 	float color_tab[15];
 	int nb_faces;
 
+	/* angles in degrees */
 	float azimut;
 	float elevation;
 	float twist;

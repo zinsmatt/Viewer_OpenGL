@@ -135,3 +135,26 @@ SnowMan::~SnowMan()
 
 }
 
+void SnowMan::moveHead(float azimut, float elevation)
+{
+	// angles in degrees
+	azimut = angleMajorValued(azimut);
+	elevation = angleMajorValued(elevation);
+	if(azimut<-90) azimut = -90;
+	if(azimut>90) azimut = 90;
+
+	if(elevation<-90) elevation = -90;
+	if(elevation>90) elevation = 90;
+
+	/* follow azimut and elevation */
+	Matrixh azimut_mat;
+	azimut_mat.setRotationZ(TO_RADIANS(azimut));
+
+	Matrixh elev_mat;
+	elev_mat.setRotationY(TO_RADIANS(-(elevation-10)));	//-10 because eyes are not horizontal
+
+	Matrixh	init_mat;	//initial translation
+	init_mat.setTranslation(0.0,0.0,5.0);
+	Matrixh res = init_mat * azimut_mat * elev_mat;
+	subParts[1]->setMatrix(res);	//apply to the head
+}

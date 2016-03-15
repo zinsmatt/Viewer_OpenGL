@@ -1,6 +1,8 @@
 #include "viewer.h"
 #include "vector.h"
 #include "partmanager.h"
+#include "part.h"
+#include "snowman.h"
 #include <iostream>
 #include <cmath>
 #include <GL/glew.h>
@@ -201,6 +203,15 @@ void Viewer::polarView(float distance, float azimut, float elevation, float twis
 	glRotatef(-90-elevation,1,0,0);
 	glRotatef(90-azimut,0,0,1);
 
+	/* snowman follows observator */
+	PartManager *manager = PartManager::getInstance();
+	auto it = manager->getStartIterator();
+	auto end = manager->getEndIterator();
+	while(it != end)
+	{
+		dynamic_cast<SnowMan*>((*it))->moveHead(azimut, elevation);
+		++it;
+	}
 }
 
 void Viewer::reshape(int width, int height)
@@ -274,7 +285,7 @@ void Viewer::update()
 	this->drawAxes(2.0);
 
 	PartManager::getInstance()->draw();
-	std::cout << "Nb Faces : " << nb_faces << std::endl;
+	//std::cout << "Nb Faces : " << nb_faces << std::endl;
 
 	glfwSwapBuffers(window);
 	glfwPollEvents();

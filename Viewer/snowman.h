@@ -6,9 +6,11 @@
 class SnowMan : public Part
 {
 	friend class PartManager;
-protected:
+private:
 	SnowMan();
 	virtual ~SnowMan();
+public:
+	void moveHead(float azimut, float elevation);
 };
 
 #endif // SNOWMAN_H

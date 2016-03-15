@@ -7,6 +7,7 @@
 #include "partmanager.h"
 #include "part.h"
 #include "snowman.h"
+#include "utility.h"
 
 using namespace std;
 
@@ -14,7 +15,7 @@ int main()
 {
 	std::srand(time(NULL));
 
-
+angleMajorValued(-90-360);
 	//MeshManager *manager = MeshManager::getInstance();
 	PartManager *manager = PartManager::getInstance();
 
@@ -39,6 +40,10 @@ int main()
 	//cube->setColor(1.0,1.0,0.0);
 
 	SnowMan *man = manager->newSnowManPart();
+	SnowMan *man2 = manager->newSnowManPart();
+	man2->getMatrix()->setTranslation(-5,2,0);
+	SnowMan *man3 = manager->newSnowManPart();
+	man3->getMatrix()->setTranslation(0.0,-7.0,0.0);
 
 	Viewer *viewer = Viewer::getInstance(600,600,"Viewer 3D");
 //	viewer->clear();
