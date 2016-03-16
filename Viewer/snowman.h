@@ -1,9 +1,9 @@
 #ifndef SNOWMAN_H
 #define SNOWMAN_H
-#include "part.h"
+#include "assembly.h"
 
 
-class SnowMan : public Part
+class SnowMan : public Assembly
 {
 	friend class PartManager;
 private:

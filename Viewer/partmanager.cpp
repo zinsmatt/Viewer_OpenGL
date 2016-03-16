@@ -1,6 +1,8 @@
 #include "partmanager.h"
 #include "part.h"
+#include "assembly.h"
 #include "snowman.h"
+#include "matrixh.h"
 
 PartManager* PartManager::instance = NULL;
 
@@ -26,6 +28,17 @@ Part* PartManager::newPart(bool subPart)
 	return nouv;
 }
 
+Assembly* PartManager::newAssembly(bool subAssembly)
+{
+	/* if subAssembly = true, the assembly is not registered by the manager
+	 the user have to take care of deallocation */
+
+	Assembly* nouv = new Assembly;
+	if(subAssembly== false)
+		parts.push_back(nouv);
+	return nouv;
+}
+
 SnowMan* PartManager::newSnowManPart(bool subPart)
 {
 	SnowMan* nouv = new SnowMan;
@@ -35,13 +48,13 @@ SnowMan* PartManager::newSnowManPart(bool subPart)
 }
 
 
-void PartManager::freePart(Part *p)
+void PartManager::freeElement(AbstractPart *p)
 {
 	for(int i=0;i<parts.size(); i++)
 	{
 		if(parts[i] == p)
 		{
-			Part* temp = parts[i];
+			AbstractPart* temp = parts[i];
 			parts.erase(parts.begin()+i);
 			delete temp;
 			return;

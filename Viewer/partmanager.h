@@ -2,7 +2,9 @@
 #define PARTMANAGER_H
 #include <vector>
 
+class AbstractPart;
 class Part;
+class Assembly;
 class SnowMan;
 
 class PartManager
@@ -12,21 +14,23 @@ public:
 	static void freeInstance() { if(instance) delete instance; }
 
 	Part* newPart(bool subPart = false);
-	void freePart(Part *p);
+	Assembly* newAssembly(bool subAssembly = false);
+	void freeElement(AbstractPart *p);
+
 
 	SnowMan* newSnowManPart(bool subPart = false);
 
 	void draw();
 	void draw3();
 
-	std::vector<Part*>::iterator getStartIterator() { return parts.begin(); }
-	std::vector<Part*>::iterator getEndIterator() { return parts.end(); }
+	std::vector<AbstractPart*>::iterator getStartIterator() { return parts.begin(); }
+	std::vector<AbstractPart*>::iterator getEndIterator() { return parts.end(); }
 
 
 private:
 	static PartManager* instance;
 
-	std::vector<Part*> parts;
+	std::vector<AbstractPart*> parts;
 
 	PartManager();
 	PartManager(const PartManager&);

@@ -1,25 +1,18 @@
 #include <GL/glew.h>
 #include "part.h"
 #include "meshmanager.h"
-#include "matrixh.h"
 #include "mesh.h"
 #include "viewer.h"
+
 Part::Part(Mesh* m) : mesh(NULL)
 {
-	color[0] = color[1] = color[2] = 1.0;
-	color[3] = 1;
-	matrix = new Matrixh;
+	color[0] = color[1] = color[2] = color[3] = 1.0;
 	if(m != NULL)
 		mesh = m;
 }
 
 Part::~Part()
-{
-	if(matrix) delete matrix;
-	for(int iter = 0; iter<subParts.size(); ++iter)
-	{
-		delete subParts[iter];
-	}
+{	
 	//do not delete the mesh because can be shared between several parts
 }
 
@@ -37,39 +30,6 @@ void Part::setMesh(Mesh *m)
 	mesh = m;
 }
 
-void Part::setMatrix(Matrixh *mat)
-{
-	if(matrix != NULL)
-	{
-		delete matrix;
-	}
-	matrix = mat;
-}
-
-void Part::setMatrix(const Matrixh& mat)
-{
-	if(matrix == NULL)
-		matrix = new Matrixh;
-	*matrix = mat;
-}
-
-
-void Part::addSubPart(Part *part)
-{
-	subParts.push_back(part);
-}
-
-void Part::removeSubPart(Part *part)
-{
-	for(int iter=0;iter<subParts.size(); iter++)
-		if(subParts[iter] == part)
-		{
-			Part* temp = subParts[iter];
-			subParts.erase(subParts.begin()+iter);
-			delete temp;
-			return;
-		}
-}
 
 void Part::draw(Matrixh mat)
 {
@@ -79,8 +39,6 @@ void Part::draw(Matrixh mat)
 		glColor3f(color[0],color[1],color[2]);
 		mesh->draw(current);
 	}
-	for(int iter = 0;iter < subParts.size(); ++iter)
-		subParts[iter]->draw(current);
 }
 
 void Part::draw3()

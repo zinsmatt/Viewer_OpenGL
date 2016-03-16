@@ -1,8 +1,10 @@
 #include "snowman.h"
 #include "mesh.h"
 #include "part.h"
+#include "assembly.h"
 #include "partmanager.h"
 #include "utility.h"
+#include "matrixh.h"
 
 SnowMan::SnowMan()
 {
@@ -13,7 +15,7 @@ SnowMan::SnowMan()
 	PartManager *manager = PartManager::getInstance();
 
 	/* create body assembly */
-	Part *body = manager->newPart(true);
+	Assembly *body = manager->newAssembly(true);
 	body->getMatrix()->setTranslation(0.0,0.0,2.0);
 
 	/* body part */
@@ -60,7 +62,7 @@ SnowMan::SnowMan()
 
 
 	/* create head assembly */
-	Part *head = manager->newPart(true);
+	Assembly *head = manager->newAssembly(true);
 	head->getMatrix()->setTranslation(0.0,0.0,4.8);
 
 	/* head part */
@@ -116,7 +118,6 @@ SnowMan::SnowMan()
 	rotz.setRotationZ(TO_RADIANS(25));
 	eye2->setMatrix(rotz * eyeTransf);
 	eye2->setColor(1.0,1.0,1.0);
-
 
 	/* add parts into head assembly */
 	head->addSubPart(headPart);
