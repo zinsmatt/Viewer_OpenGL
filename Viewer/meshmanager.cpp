@@ -13,7 +13,7 @@ MeshManager::~MeshManager() {
 }
 
 Mesh* MeshManager::newMesh()
-{ // allocate a new mesh and keep a pointer for update
+{ // allocate a new mesh and keep a pointer
 	Mesh* temp = new Mesh;
 	meshes.push_back(temp);
 	return temp;

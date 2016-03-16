@@ -50,6 +50,7 @@ int main()
 	Viewer *viewer = Viewer::getInstance(600,600,"Viewer 3D");
 //	viewer->clear();
 
+	manager->printSceneTree();
 	while(!viewer->isClosed())
 	{
 		viewer->update();

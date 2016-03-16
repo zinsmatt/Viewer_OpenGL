@@ -27,6 +27,7 @@ public:
 	virtual void draw(Matrixh mat) = 0;
 	virtual void draw3() = 0;
 	virtual PART_TYPE getType() const = 0;
+	virtual void showInfo() const = 0;
 };
 
 #endif // ABSTRACTPART_H

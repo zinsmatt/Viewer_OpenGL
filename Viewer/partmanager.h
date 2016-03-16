@@ -15,13 +15,13 @@ public:
 
 	Part* newPart(bool subPart = false);
 	Assembly* newAssembly(bool subAssembly = false);
-	void freeElement(AbstractPart *p);
-
-
 	SnowMan* newSnowManPart(bool subPart = false);
+	void freeElement(AbstractPart *p);
 
 	void draw();
 	void draw3();
+
+	void printSceneTree() const;
 
 	std::vector<AbstractPart*>::iterator getStartIterator() { return parts.begin(); }
 	std::vector<AbstractPart*>::iterator getEndIterator() { return parts.end(); }

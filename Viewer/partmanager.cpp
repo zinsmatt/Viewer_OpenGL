@@ -3,6 +3,7 @@
 #include "assembly.h"
 #include "snowman.h"
 #include "matrixh.h"
+#include <iostream>
 
 PartManager* PartManager::instance = NULL;
 
@@ -76,4 +77,14 @@ void PartManager::draw3()
 	{
 		parts[iter]->draw3();
 	}
+}
+
+void PartManager::printSceneTree() const
+{
+	std::cout << "\n================== Scene Tree ==================" << std::endl;
+	for(int iter = 0; iter<parts.size(); ++iter)
+	{
+		parts[iter]->showInfo();
+	}
+	std::cout << "================================================\n\n";
 }

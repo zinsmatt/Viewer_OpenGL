@@ -150,3 +150,9 @@ void SnowMan::moveHead(float azimut, float elevation)
 	Matrixh res = init_mat * azimut_mat * elev_mat;
 	subParts[1]->setMatrix(res);	//apply to the head
 }
+
+void SnowMan::showInfo() const
+{
+	std::cout << "(SnowMan)" << std::endl;
+	Assembly::showInfo();
+}

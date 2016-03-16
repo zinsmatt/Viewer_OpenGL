@@ -39,3 +39,8 @@ void Part::draw3()
 {
 	mesh->draw3(matrix);
 }
+
+void Part::showInfo() const
+{
+	std::cout << "Part " << id << std::endl;
+}

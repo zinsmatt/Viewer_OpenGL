@@ -1,5 +1,6 @@
 #include "assembly.h"
 #include "matrixh.h"
+#include <iostream>
 
 Assembly::Assembly(int id) : AbstractPart(id)
 {
@@ -41,4 +42,15 @@ void Assembly::draw(Matrixh mat)
 void Assembly::draw3()
 {
 
+}
+
+void Assembly::showInfo() const
+{
+	std::cout << "Assembly " << id <<" :\n";
+	for(int iter = 0; iter<subParts.size(); ++iter)
+	{
+		std::cout << "\t";
+		subParts[iter]->showInfo();
+	}
+	std::cout << std::endl;
 }

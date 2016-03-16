@@ -20,6 +20,7 @@ public:
 	virtual void draw(Matrixh mat);
 	virtual void draw3();
 	virtual PART_TYPE getType() const { return PART_ASSEMBLY; }
+	virtual void showInfo() const;
 };
 
 #endif // ASSEMBLY_H
