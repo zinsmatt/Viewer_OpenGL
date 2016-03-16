@@ -9,16 +9,13 @@ Part::Part(Mesh* m) : mesh(NULL)
 	color[0] = color[1] = color[2] = color[3] = 1.0;
 	if(m != NULL)
 		mesh = m;
+	else
+		mesh = MeshManager::getInstance()->newMesh();
 }
 
 Part::~Part()
 {	
 	//do not delete the mesh because can be shared between several parts
-}
-
-void Part::createEmptyMesh()
-{
-	mesh = MeshManager::getInstance()->newMesh();
 }
 
 void Part::setMesh(Mesh *m)

@@ -6,7 +6,8 @@ class Matrixh;
 enum PART_TYPE
 {
 	PART_INSTANCE,
-	PART_ASSEMBLY
+	PART_ASSEMBLY,
+	SNOWMAN_ASSEMBLY
 };
 
 class AbstractPart

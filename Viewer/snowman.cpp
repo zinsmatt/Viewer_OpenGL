@@ -20,7 +20,6 @@ SnowMan::SnowMan()
 
 	/* body part */
 	Part *bodyPart = manager->newPart(true);
-	bodyPart->createEmptyMesh();
 	bodyPart->getMesh()->createSphere(4);
 	bodyPart->getMatrix()->setScale(2.0,2.0,2.0);
 	bodyPart->setColor(1.0,0.0,0.0);
@@ -40,17 +39,14 @@ SnowMan::SnowMan()
 
 	// create buttons parts
 	Part *button1 = manager->newPart(true);
-	button1->createEmptyMesh();
 	button1->getMesh()->createSphere(4);
 	button1->setMatrix(matButton1);
 
 	Part* button2 = manager->newPart(true);
-	button2->createEmptyMesh();
 	button2->getMesh()->createSphere(4);
 	button2->setMatrix(scaleTrans);
 
 	Part *button3 = manager->newPart(true);
-	button3->createEmptyMesh();
 	button3->getMesh()->createSphere(4);
 	button3->setMatrix(matButton3);
 
@@ -67,13 +63,11 @@ SnowMan::SnowMan()
 
 	/* head part */
 	Part *headPart = manager->newPart(true);
-	headPart->createEmptyMesh();
 	headPart->getMesh()->createSphere(4);
 	headPart->setColor(1.0,0.0,0.0);
 
 	/* nose part */
 	Part *nose = manager->newPart(true);
-	nose->createEmptyMesh();
 	nose->getMesh()->createCube();
 	Matrixh scale;
 	scale.setScale(0.1,0.1,0.1);
@@ -85,10 +79,9 @@ SnowMan::SnowMan()
 
 	/* hat */
 	Part *hat = manager->newPart(true);
-	hat->createEmptyMesh();
-	hat->getMesh()->createCube();
+	hat->getMesh()->createCone(20,2.0);
 	scale.setScale(0.5,0.5,0.5);
-	transl.setTranslation(0.0,0.0,1.0);
+	transl.setTranslation(0.0,0.0,0.8);
 	Matrixh hatTransf = transl * scale;
 	hat->setMatrix(hatTransf);
 	hat->setColor(0.0,0.0,1.0);
@@ -105,7 +98,6 @@ SnowMan::SnowMan()
 
 	// create eyes
 	Part *eye1 = manager->newPart(true);
-	eye1->createEmptyMesh();
 	eye1->getMesh()->createSphere(4);
 	Matrixh rotz;
 	rotz.setRotationZ(TO_RADIANS(-25));
@@ -113,7 +105,6 @@ SnowMan::SnowMan()
 	eye1->setColor(1.0,1.0,1.0);
 
 	Part *eye2 = manager->newPart(true);
-	eye2->createEmptyMesh();
 	eye2->getMesh()->createSphere(4);
 	rotz.setRotationZ(TO_RADIANS(25));
 	eye2->setMatrix(rotz * eyeTransf);

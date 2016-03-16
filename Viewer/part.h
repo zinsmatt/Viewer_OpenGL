@@ -19,7 +19,6 @@ protected:
 
 public:
 	void setMesh(Mesh* m);
-	void createEmptyMesh();
 	Mesh* getMesh() { return mesh; }
 
 	void setColor(float r, float g, float b) {	color[0] = r; color[1] = g; color[2] = b; }

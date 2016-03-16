@@ -64,13 +64,13 @@ void Mesh::draw3(Matrixh *transf)
 }
 
 
-void Mesh::createSphere(int step)
+void Mesh::createSphere(int step, float radius)
 {
 	coordinates.clear();
-	Point3f a = {0.0f ,1.0f ,0.0f};
-	Point3f b = {-0.75f, -0.5f, -0.43f};
-	Point3f c = {0.75f, -0.5f, -0.43f};
-	Point3f d = {0.0f, -0.5f, 0.86f};
+	Point3f a = {0.0f ,radius * 1.0f ,0.0f};
+	Point3f b = {-radius * 0.75f, -radius * 0.5f, -radius * 0.43f};
+	Point3f c = {radius * 0.75f, -radius * 0.5f, -radius * 0.43f};
+	Point3f d = {0.0f, -radius * 0.5f, radius * 0.86f};
 
 	// callsubdiv
 	subdivideTriangle(a,b,c,step);
@@ -106,20 +106,24 @@ void Mesh::subdivideTriangle(Point3f a, Point3f b, Point3f c, int n)
 	}
 }
 
-void Mesh::createCube()
+void Mesh::createCube(float x, float y, float z)
 {
-	// create a cube inscrit in a sphere of radius 1 centered in the origin
+	// create a cube centered on the origin with dimensions x, y and z along each axis
 	coordinates.clear();
 	coordinates.reserve(6*2*3*3);
-	Point3f a = {-1,1, 1};
-	Point3f b = {-1,1,-1};
-	Point3f c = { 1,1,-1};
-	Point3f d = { 1,1, 1};
+	x *= 0.5;
+	y *= 0.5;
+	z *= 0.5;
 
-	Point3f e = {-1,-1, 1};
-	Point3f f = {-1,-1,-1};
-	Point3f g = { 1,-1,-1};
-	Point3f h = { 1,-1, 1};
+	Point3f a = {-x,y, z};
+	Point3f b = {-x,y,-z};
+	Point3f c = { x,y,-z};
+	Point3f d = { x,y, z};
+
+	Point3f e = {-x,-y, z};
+	Point3f f = {-x,-y,-z};
+	Point3f g = { x,-y,-z};
+	Point3f h = { x,-y, z};
 
 	this->addSquareFace(a,b,c,d);
 	this->addSquareFace(d,c,g,h);
@@ -131,3 +135,27 @@ void Mesh::createCube()
 	std::cout << "nb coord = " << coordinates.size() << std::endl;
 }
 
+void Mesh::createCone(int steps, float height, float radius)
+{
+	/* create a cone with the base on the plan xOy */
+	float increment_angle = 2*PI / steps;
+	float angle = increment_angle;
+	float x,y;
+	Point3f O = {0.0,0.0,0.0};
+	Point3f A = {0.0,0.0,0.0};
+	Point3f prev_A = {0.0,0.0,0.0};
+	Point3f head = {0.0,0.0,height };
+
+	for(int iter = 0; iter <= steps; iter++)
+	{
+		prev_A[0] = A[0];
+		prev_A[1] = A[1];
+		x = radius * cos(angle);
+		y = radius * sin(angle);
+		A[0] = x;
+		A[1] = y;
+		this->addFace(A, O, prev_A);
+		this->addFace(A, head, prev_A);
+		angle += increment_angle;
+	}
+}

@@ -209,7 +209,8 @@ void Viewer::polarView(float distance, float azimut, float elevation, float twis
 	auto end = manager->getEndIterator();
 	while(it != end)
 	{
-		dynamic_cast<SnowMan*>((*it))->moveHead(azimut, elevation);
+		if((*it)->getType() == SNOWMAN_ASSEMBLY)
+			dynamic_cast<SnowMan*>((*it))->moveHead(azimut, elevation);
 		++it;
 	}
 }
