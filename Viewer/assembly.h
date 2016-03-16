@@ -11,7 +11,7 @@ protected:
 	std::vector<AbstractPart*> subParts;
 
 public:
-	Assembly();
+	Assembly(int id);
 	virtual ~Assembly();
 
 	void addSubPart(AbstractPart *part);

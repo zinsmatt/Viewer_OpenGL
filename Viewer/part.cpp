@@ -4,13 +4,10 @@
 #include "mesh.h"
 #include "viewer.h"
 
-Part::Part(Mesh* m) : mesh(NULL)
+Part::Part(int id) : AbstractPart(id)
 {
 	color[0] = color[1] = color[2] = color[3] = 1.0;
-	if(m != NULL)
-		mesh = m;
-	else
-		mesh = MeshManager::getInstance()->newMesh();
+	mesh = MeshManager::getInstance()->newMesh();
 }
 
 Part::~Part()

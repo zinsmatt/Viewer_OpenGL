@@ -29,6 +29,7 @@ public:
 
 private:
 	static PartManager* instance;
+	int lastId;
 
 	std::vector<AbstractPart*> parts;
 

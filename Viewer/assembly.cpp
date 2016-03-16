@@ -1,7 +1,7 @@
 #include "assembly.h"
 #include "matrixh.h"
 
-Assembly::Assembly()
+Assembly::Assembly(int id) : AbstractPart(id)
 {
 
 }

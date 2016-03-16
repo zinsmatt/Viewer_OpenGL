@@ -14,7 +14,7 @@ protected:
 	Mesh *mesh;
 	float color[4];
 
-	Part(Mesh* m=NULL);
+	Part(int id);
 	virtual ~Part();
 
 public:

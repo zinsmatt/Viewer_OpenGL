@@ -15,9 +15,10 @@ class AbstractPart
 	friend class PartManager;
 protected:
 	Matrixh *matrix;
+	int id;
 
 public:
-	AbstractPart();
+	AbstractPart(int id);
 	virtual ~AbstractPart();
 
 	void setMatrix(const Matrixh& mat);

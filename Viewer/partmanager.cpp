@@ -6,7 +6,7 @@
 
 PartManager* PartManager::instance = NULL;
 
-PartManager::PartManager()
+PartManager::PartManager() : lastId(0)
 {
 
 }
@@ -22,7 +22,7 @@ Part* PartManager::newPart(bool subPart)
 	/* if subPart = true, the part is not registered by the manager
 	 the user have to take care of deallocation */
 
-	Part *nouv = new Part;
+	Part *nouv = new Part(lastId++);
 	if(subPart == false)
 		parts.push_back(nouv);
 	return nouv;
@@ -33,7 +33,7 @@ Assembly* PartManager::newAssembly(bool subAssembly)
 	/* if subAssembly = true, the assembly is not registered by the manager
 	 the user have to take care of deallocation */
 
-	Assembly* nouv = new Assembly;
+	Assembly* nouv = new Assembly(lastId++);
 	if(subAssembly== false)
 		parts.push_back(nouv);
 	return nouv;
@@ -41,7 +41,7 @@ Assembly* PartManager::newAssembly(bool subAssembly)
 
 SnowMan* PartManager::newSnowManPart(bool subPart)
 {
-	SnowMan* nouv = new SnowMan;
+	SnowMan* nouv = new SnowMan(lastId++);
 	if(subPart == false)
 		parts.push_back(nouv);
 	return nouv;

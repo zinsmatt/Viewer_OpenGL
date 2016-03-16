@@ -1,7 +1,7 @@
 #include "abstractpart.h"
 #include "matrixh.h"
 
-AbstractPart::AbstractPart()
+AbstractPart::AbstractPart(int _id) : id(_id)
 {
 	matrix = new Matrixh;
 }

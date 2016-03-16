@@ -6,7 +6,7 @@
 #include "utility.h"
 #include "matrixh.h"
 
-SnowMan::SnowMan()
+SnowMan::SnowMan(int id) : Assembly(id)
 {
 	//  snowman = head + body
 	//		- body = body + buttons

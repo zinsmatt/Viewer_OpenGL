@@ -7,7 +7,7 @@ class SnowMan : public Assembly
 {
 	friend class PartManager;
 private:
-	SnowMan();
+	SnowMan(int id);
 	virtual ~SnowMan();
 public:
 	void moveHead(float azimut, float elevation);
