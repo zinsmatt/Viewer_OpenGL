@@ -25,7 +25,7 @@ public:
 
 	virtual void draw(Matrixh mat);
 	virtual void draw3();
-	virtual PART_TYPE getType() const { return PART_INSTANCE; }
+	virtual PART_TYPE getType() const { return PART_TYPE::PART_INSTANCE; }
 	virtual void showInfo() const;
 
 };

@@ -19,7 +19,7 @@ public:
 
 	virtual void draw(Matrixh mat);
 	virtual void draw3();
-	virtual PART_TYPE getType() const { return PART_ASSEMBLY; }
+	virtual AbstractPart::PART_TYPE getType() const { return AbstractPart::PART_TYPE::PART_ASSEMBLY; }
 	virtual void showInfo() const;
 };
 

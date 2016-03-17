@@ -3,15 +3,18 @@
 
 class Matrixh;
 
-enum PART_TYPE
-{
-	PART_INSTANCE,
-	PART_ASSEMBLY,
-	SNOWMAN_ASSEMBLY
-};
 
 class AbstractPart
 {
+public:
+	enum class PART_TYPE
+	{
+		PART_INSTANCE,
+		PART_ASSEMBLY,
+		SNOWMAN_ASSEMBLY
+	};
+
+
 	friend class PartManager;
 protected:
 	Matrixh *matrix;

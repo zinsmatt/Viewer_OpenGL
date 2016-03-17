@@ -11,7 +11,7 @@ private:
 	virtual ~SnowMan();
 public:
 	void moveHead(float azimut, float elevation);
-	virtual PART_TYPE getType() const { return SNOWMAN_ASSEMBLY; }
+	virtual PART_TYPE getType() const { return PART_TYPE::SNOWMAN_ASSEMBLY; }
 	virtual void showInfo() const;
 };
 
