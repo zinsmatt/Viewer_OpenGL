@@ -1,6 +1,8 @@
 #ifndef MESH_H
 #define MESH_H
 #include "point.h"
+#include "face.h"
+#include "vertex.h"
 #include <vector>
 #include <iterator>
 
@@ -11,6 +13,8 @@ class Mesh
 private:
 	std::vector<float> coordinates;
 	void subdivideTriangle(Point3f a, Point3f b, Point3f c, int n);
+	std::vector<Vertex*> vertices;
+	std::vector<Face> faces;
 
 public:
 
@@ -19,8 +23,10 @@ public:
 
 	int getNbFaces() const { return (float)coordinates.size()/9; }
 
-	void addFace(Point3f a,Point3f b,Point3f c);
+	void addFace(Vertex *a, Vertex *b, Vertex *c);
 	void addSquareFace(Point3f a, Point3f b, Point3f c, Point3f d);
+
+	Vertex* newVertex(float x, float y, float z);
 
 	void draw(Matrixh &transf);
 	void draw3(Matrixh *transf);

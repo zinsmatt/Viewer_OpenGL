@@ -2,11 +2,11 @@
 #define VERTEX_H
 
 
-class Vertex
+struct Vertex
 {
-public:
-	Vertex();
-	~Vertex();
+	float x;
+	float y;
+	float z;
 };
 
 #endif // VERTEX_H

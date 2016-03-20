@@ -11,6 +11,7 @@
 
 class GLFWwindow;
 class Mesh;
+class Vertex;
 
 class Viewer
 {
@@ -32,7 +33,7 @@ public:
 
 	bool isClosed() const { return close; }
 
-	void drawFace(Point3f a, Point3f b, Point3f c);
+	void drawFace(Vertex *a, Vertex *b, Vertex *c);
 	void drawAxes(float size);
 
 	void setPerspective(float fovy, float ratio, float znear, float zfar);

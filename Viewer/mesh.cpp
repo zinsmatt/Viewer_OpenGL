@@ -14,30 +14,39 @@ Mesh::~Mesh()
 }
 
 
-void Mesh::addFace(Point3f a, Point3f b, Point3f c)
+void Mesh::addFace(Vertex* a, Vertex *b, Vertex *c)
 {	// add a triangle face
-	coordinates.reserve(9);
+	/*coordinates.reserve(9);
 	for(int i=0;i<3;++i)
 		coordinates.push_back(a[i]);
 	for(int i=0;i<3;++i)
 		coordinates.push_back(b[i]);
 	for(int i=0;i<3;++i)
-		coordinates.push_back(c[i]);
+		coordinates.push_back(c[i]);*/
+	Face new_face(a,b,c);
+	faces.push_back(std::move(new_face));
 }
 
 
 void Mesh::addSquareFace(Point3f a, Point3f b, Point3f c, Point3f d)
 {	// add a square face decomposed in two triangles
-	addFace(a,b,c);
-	addFace(c,d,a);
+	//addFace(a,b,c);
+	//addFace(c,d,a);
 }
 
+Vertex* Mesh::newVertex(float x, float y, float z)
+{
+	Vertex* nouv_vertex = new Vertex({x, y, z});
+	vertices.push_back(nouv_vertex);
+	return nouv_vertex;
+}
 
 void Mesh::draw(Matrixh& transf)
 {
 	glPushMatrix();
 	glMultMatrixf(transf.toColMajorMatrix());
-	Point3f pt[3];
+
+	/*Point3f pt[3];
 	Viewer* viewer = Viewer::getInstance();
 	//viewer->setColorIndex(0);
 	int nb = 0, iter = 0;
@@ -54,6 +63,12 @@ void Mesh::draw(Matrixh& transf)
 			nb = 0;
 			viewer->drawFace(pt[0],pt[1],pt[2]);
 		}
+	}*/
+	Viewer* viewer = Viewer::getInstance();
+	for(int iter = 0; iter<faces.size(); ++iter)
+	{
+		Face& face = faces[iter];
+		viewer->drawFace(face.v1, face.v2, face.v3);
 	}
 	glPopMatrix();
 }
@@ -85,7 +100,7 @@ void Mesh::subdivideTriangle(Point3f a, Point3f b, Point3f c, int n)
 {
 	if(n==0)
 	{
-		this->addFace(a,b,c);
+//		this->addFace(a,b,c);
 	}else
 	{
 		Point3f ab,bc,ac;
@@ -141,21 +156,30 @@ void Mesh::createCone(int steps, float height, float radius)
 	float increment_angle = 2*PI / steps;
 	float angle = increment_angle;
 	float x,y;
-	Point3f O = {0.0,0.0,0.0};
-	Point3f A = {0.0,0.0,0.0};
-	Point3f prev_A = {0.0,0.0,0.0};
-	Point3f head = {0.0,0.0,height };
+	//Point3f O = {0.0,0.0,0.0};
+	//Point3f A = {0.0,0.0,0.0};
+	//Point3f prev_A = {0.0,0.0,0.0};
+	//Point3f head = {0.0,0.0,height };
+
+	Vertex *origin = newVertex(0.0,0.0,0.0);
+	Vertex *A = newVertex(radius,0.0,0.0);
+	Vertex *prev_A;
+	Vertex *head = newVertex(0.0,0.0,height);
 
 	for(int iter = 0; iter <= steps; iter++)
 	{
-		prev_A[0] = A[0];
-		prev_A[1] = A[1];
+		//prev_A[0] = A[0];
+		//prev_A[1] = A[1];
+		prev_A = A;
 		x = radius * cos(angle);
 		y = radius * sin(angle);
-		A[0] = x;
-		A[1] = y;
-		this->addFace(A, O, prev_A);
-		this->addFace(A, head, prev_A);
+		A = newVertex(x,y,0.0);
+		addFace(A,origin,prev_A);
+		addFace(A, head, prev_A);
+		//A[0] = x;
+		//A[1] = y;
+//		this->addFace(A, O, prev_A);
+//		this->addFace(A, head, prev_A);
 		angle += increment_angle;
 	}
 }

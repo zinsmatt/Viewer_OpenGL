@@ -3,7 +3,9 @@
 #include "partmanager.h"
 #include "part.h"
 #include "snowman.h"
+#include "vertex.h"
 #include <iostream>
+#include <iomanip>
 #include <cmath>
 #include <GL/glew.h>
 #include <GL/glut.h>
@@ -300,16 +302,19 @@ void Viewer::clear()
 	glClearColor(0.0f,0.78f,0.5f,1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
-void Viewer::drawFace(Point3f a, Point3f b, Point3f c)
+void Viewer::drawFace(Vertex *a, Vertex *b, Vertex *c)
 {
 	//glBegin(GL_TRIANGLES);
 	glBegin(draw_mode);
-
+	std::cout.precision(3);
 	//glColor3f(color_tab[color_index*3],color_tab[color_index*3+1],color_tab[color_index*3+2]); /*colors[index_color],colors[index_color+1],colors[index_color+2]);*/
+	//std::cout  << "a : " << std::setw(10)<< a[0]<< std::setw(10) <<" " << a[1] <<" " << std::setw(10)<< a[2] <<"\n";
+	//std::cout  << "b : " << std::setw(10)<< b[0]<< std::setw(10) <<" " << b[1] <<" " << std::setw(10)<< b[2] <<"\n";
+	//std::cout  << "c : " << std::setw(10)<< c[0]<< std::setw(10) <<" " << c[1] <<" " << std::setw(10)<< c[2] <<"\n";
 
-	glVertex3f(a[0],a[1],a[2]);
-	glVertex3f(b[0],b[1],b[2]);
-	glVertex3f(c[0],c[1],c[2]);
+	glVertex3f(a->x,a->y,a->z);
+	glVertex3f(b->x,b->y,b->z);
+	glVertex3f(c->x,c->y,c->z);
 	glEnd();
 
 	nb_faces += 1;

@@ -18,7 +18,7 @@ int main()
 	//MeshManager *manager = MeshManager::getInstance();
 	PartManager *manager = PartManager::getInstance();
 	Part* cone = manager->newPart();
-	cone->getMesh()->createCone(50, 2.0);
+	cone->getMesh()->createCone(6, 2.0);
 	cone->setColor(1.0,1.0,0.0);
 	//Part *sphere = manager->newPart(false);
 	//sphere->getMesh()->createSphere(3);
@@ -40,12 +40,12 @@ int main()
 	//cube->getMatrix()->setTranslation(2.0,2.0,0.0);
 	//cube->setColor(1.0,1.0,0.0);
 
-	SnowMan *man = manager->newSnowManPart();
-	man->getMatrix()->setTranslation(-5.0,-1.0,0.0);
-	SnowMan *man2 = manager->newSnowManPart();
-	man2->getMatrix()->setTranslation(-5,2,0);
-	SnowMan *man3 = manager->newSnowManPart();
-	man3->getMatrix()->setTranslation(0.0,-7.0,0.0);
+	//SnowMan *man = manager->newSnowManPart();
+	//man->getMatrix()->setTranslation(-5.0,-1.0,0.0);
+	//SnowMan *man2 = manager->newSnowManPart();
+	//man2->getMatrix()->setTranslation(-5,2,0);
+	//SnowMan *man3 = manager->newSnowManPart();
+	//man3->getMatrix()->setTranslation(0.0,-7.0,0.0);
 
 	Viewer *viewer = Viewer::getInstance(600,600,"Viewer 3D");
 //	viewer->clear();
