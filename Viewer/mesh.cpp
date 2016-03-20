@@ -79,13 +79,13 @@ void Mesh::draw3(Matrixh *transf)
 }
 
 
-void Mesh::createSphere(int step, float radius)
+void Mesh::createSphere(int step)
 {
 	coordinates.clear();
-	Point3f a = {0.0f ,radius * 1.0f ,0.0f};
-	Point3f b = {-radius * 0.75f, -radius * 0.5f, -radius * 0.43f};
-	Point3f c = {radius * 0.75f, -radius * 0.5f, -radius * 0.43f};
-	Point3f d = {0.0f, -radius * 0.5f, radius * 0.86f};
+	Point3f a = {0.0f ,1.0f ,0.0f};
+	Point3f b = {-0.75f, -0.5f, -0.43f};
+	Point3f c = { 0.75f, -0.5f, -0.43f};
+	Point3f d = {0.0f, -0.5f, 0.86f};
 
 	// callsubdiv
 	subdivideTriangle(a,b,c,step);
@@ -100,7 +100,10 @@ void Mesh::subdivideTriangle(Point3f a, Point3f b, Point3f c, int n)
 {
 	if(n==0)
 	{
-//		this->addFace(a,b,c);
+		Vertex *v1 = newVertex(a[0],a[1],a[2]);
+		Vertex *v2 = newVertex(b[0],b[1],b[2]);
+		Vertex *v3 = newVertex(c[0],c[1],c[2]);
+		this->addFace(v1, v2, v3);
 	}else
 	{
 		Point3f ab,bc,ac;

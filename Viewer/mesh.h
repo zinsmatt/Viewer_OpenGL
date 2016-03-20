@@ -31,7 +31,7 @@ public:
 	void draw(Matrixh &transf);
 	void draw3(Matrixh *transf);
 
-	void createSphere(int step, float radius = 1.0);
+	void createSphere(int step);
 	void createCube(float x = 1.0, float y = 1.0, float z = 1.0);
 	void createCone(int steps, float height = 1.0, float radius = 1.0);
 
