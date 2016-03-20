@@ -17,9 +17,16 @@ int main()
 
 	//MeshManager *manager = MeshManager::getInstance();
 	PartManager *manager = PartManager::getInstance();
-	Part* cone = manager->newPart();
-	cone->getMesh()->createCone(6, 2.0);
-	cone->setColor(1.0,1.0,0.0);
+
+	//Part* cone = manager->newPart();
+	//cone->getMesh()->createCone(6, 2.0);
+	//cone->setColor(1.0,1.0,0.0);
+
+	Part* cube = manager->newPart();
+	cube->getMesh()->createCube(1.0,1.0,1.0);
+	cube->setColor(1.0,1.0,0.0);
+
+
 	//Part *sphere = manager->newPart(false);
 	//sphere->getMesh()->createSphere(3);
 	//sphere->setColor(1.0,0.0,0.0);

@@ -24,7 +24,7 @@ public:
 	int getNbFaces() const { return (float)coordinates.size()/9; }
 
 	void addFace(Vertex *a, Vertex *b, Vertex *c);
-	void addSquareFace(Point3f a, Point3f b, Point3f c, Point3f d);
+	void addSquareFace(Vertex *a, Vertex *b, Vertex *c, Vertex *d);
 
 	Vertex* newVertex(float x, float y, float z);
 

@@ -28,10 +28,10 @@ void Mesh::addFace(Vertex* a, Vertex *b, Vertex *c)
 }
 
 
-void Mesh::addSquareFace(Point3f a, Point3f b, Point3f c, Point3f d)
+void Mesh::addSquareFace(Vertex* a, Vertex* b, Vertex *c, Vertex *d)
 {	// add a square face decomposed in two triangles
-	//addFace(a,b,c);
-	//addFace(c,d,a);
+	addFace(a,b,c);
+	addFace(c,d,a);
 }
 
 Vertex* Mesh::newVertex(float x, float y, float z)
@@ -124,21 +124,22 @@ void Mesh::subdivideTriangle(Point3f a, Point3f b, Point3f c, int n)
 void Mesh::createCube(float x, float y, float z)
 {
 	// create a cube centered on the origin with dimensions x, y and z along each axis
-	coordinates.clear();
-	coordinates.reserve(6*2*3*3);
+	//coordinates.clear();
+	//coordinates.reserve(6*2*3*3);
+	vertices.reserve(8);	// reserve 8 pointers to vertices
 	x *= 0.5;
 	y *= 0.5;
 	z *= 0.5;
 
-	Point3f a = {-x,y, z};
-	Point3f b = {-x,y,-z};
-	Point3f c = { x,y,-z};
-	Point3f d = { x,y, z};
+	Vertex *a = newVertex(-x,y, z);
+	Vertex *b = newVertex(-x,y,-z);
+	Vertex *c = newVertex( x,y,-z);
+	Vertex *d = newVertex( x,y, z);
 
-	Point3f e = {-x,-y, z};
-	Point3f f = {-x,-y,-z};
-	Point3f g = { x,-y,-z};
-	Point3f h = { x,-y, z};
+	Vertex *e = newVertex(-x,-y, z);
+	Vertex *f = newVertex(-x,-y,-z);
+	Vertex *g = newVertex( x,-y,-z);
+	Vertex *h = newVertex( x,-y, z);
 
 	this->addSquareFace(a,b,c,d);
 	this->addSquareFace(d,c,g,h);
