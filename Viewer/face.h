@@ -13,10 +13,6 @@ public:
 	Vertex *v1;
 	Vertex *v2;
 	Vertex *v3;
-
-	//Vertex* v1() const { return v1; }
-	//Vertex* v2() const { return v2; }
-	//Vertex* v3() const { return v3; }
 };
 
 #endif // FACE_H
