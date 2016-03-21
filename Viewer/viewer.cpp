@@ -392,7 +392,20 @@ void Viewer::drawFace(Face& face)
 		glVertex3f(c->x,c->y,c->z);
 	}else if (smooth_mode == SMOOTH_MODE::SMOOTH)
 	{
-		std::cerr << "smooth mode not yet implemented" << std::endl;
+		Vector v(a->x,a->y,a->z,1.0);
+		v.normalize();
+		glNormal3f(v[0],v[1],v[2]);
+		glVertex3f(a->x,a->y,a->z);
+
+		v.set(b->x,b->y,b->z,1.0);
+		v.normalize();
+		glNormal3f(v[0],v[1],v[2]);
+		glVertex3f(b->x,b->y,b->z);
+
+		v.set(c->x,c->y,c->z,1.0);
+		v.normalize();
+		glNormal3f(v[0],v[1],v[2]);
+		glVertex3f(c->x,c->y,c->z);
 	}
 
 	glEnd();

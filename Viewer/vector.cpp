@@ -48,6 +48,17 @@ Vector Vector::operator^(const Vector& v2)
 	return resultat;
 }
 
+Vector Vector::operator+(const Vector& v2)
+{
+	Vector resultat;
+	double x,y,z;
+	x = values[0] + v2.values[0];
+	y = values[1] + v2.values[1];
+	z = values[2] + v2.values[2];
+	resultat.set(x,y,z,1.0);
+	return resultat;
+}
+
 void Vector::operator *=(double fact)
 {
 	values[0] *= fact;

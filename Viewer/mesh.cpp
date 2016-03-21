@@ -28,7 +28,7 @@ void Mesh::addSquareFace(Vertex* a, Vertex* b, Vertex *c, Vertex *d)
 
 Vertex* Mesh::newVertex(float x, float y, float z)
 {
-	Vertex* nouv_vertex = new Vertex({x, y, z});
+	Vertex* nouv_vertex = new Vertex({x, y, z, 0.0, 0.0, 0.0});
 	vertices.push_back(nouv_vertex);
 	return nouv_vertex;
 }
