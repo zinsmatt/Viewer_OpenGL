@@ -1,4 +1,5 @@
 #include "vector.h"
+#include <cmath>
 
 Vector::Vector(const double *v)
 {
@@ -27,6 +28,25 @@ Vector::~Vector()
 
 }
 
+void Vector::normalize()
+{
+	double n = sqrt(values[0]*values[0] + values[1]*values[1] + values[2]*values[2]);
+	double inverse = 1.0 / n;
+	values[0] *= inverse;
+	values[1] *= inverse;
+	values[2] *= inverse;
+}
+
+Vector Vector::operator^(const Vector& v2)
+{
+	Vector resultat;
+	double x,y,z;
+	x = values[1]*v2.values[2] - values[2]*v2.values[1];
+	y = values[2]*v2.values[0] - values[0]*v2.values[2];
+	z = values[0]*v2.values[1] - values[1]*v2.values[0];
+	resultat.set(x,y,z,1.0);
+	return resultat;
+}
 
 
 

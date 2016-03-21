@@ -3,6 +3,7 @@
 #include "partmanager.h"
 #include "part.h"
 #include "snowman.h"
+#include "face.h"
 #include "vertex.h"
 #include <iostream>
 #include <iomanip>
@@ -16,7 +17,8 @@ Viewer* Viewer::instance = NULL;
 
 
 Viewer::Viewer(int width, int height, const std::string title) : window(NULL), close(false), color_index(0),
-    nb_faces(0), azimut(0.0), elevation(0.0), twist(0.0), distance(0.0), draw_mode(GL_TRIANGLES)
+    nb_faces(0), azimut(0.0), elevation(0.0), twist(0.0), distance(0.0),
+    draw_mode(DRAW_MODE::TRIANGLES), smooth_mode(SMOOTH_MODE::NO_SMOOTH)
 {
 	std::cout << "Constructor !!\n" << std::endl;
 	if(!glfwInit())
@@ -257,12 +259,24 @@ void Viewer::key(int key, int scancode, int action, int mods)
 		else if (key == GLFW_KEY_RIGHT)
 	        polarView(distance,azimut+5,elevation,twist);
 	}
-	if(action == GLFW_PRESS && key == GLFW_KEY_Z)	//key w in azerty
+
+
+	/* w ==> switch draw_mode : wireframe <-> triangles */
+	if(action == GLFW_PRESS && key == GLFW_KEY_Z)
 	{
-		if(draw_mode == GL_TRIANGLES)
-			draw_mode = GL_LINE_LOOP;
-		else if(draw_mode == GL_LINE_LOOP)
-			draw_mode = GL_TRIANGLES;
+		if(draw_mode == DRAW_MODE::WIREFRAME)
+			draw_mode = DRAW_MODE::TRIANGLES;
+		else if(draw_mode == DRAW_MODE::TRIANGLES)
+			draw_mode = DRAW_MODE::WIREFRAME;
+	}
+
+	/* s ==> switch smooth mode : smooth <-> no smooth */
+	if(action == GLFW_PRESS && key == GLFW_KEY_S)
+	{
+		if(smooth_mode == SMOOTH_MODE::SMOOTH)
+			smooth_mode = SMOOTH_MODE::NO_SMOOTH;
+		else
+			smooth_mode = SMOOTH_MODE::SMOOTH;
 	}
 }
 
@@ -302,23 +316,32 @@ void Viewer::clear()
 	glClearColor(0.0f,0.78f,0.5f,1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
-void Viewer::drawFace(Vertex *a, Vertex *b, Vertex *c)
+void Viewer::drawFace(Face& face)
 {
-	//glBegin(GL_TRIANGLES);
-	glBegin(draw_mode);
-	std::cout.precision(3);
-	//glColor3f(color_tab[color_index*3],color_tab[color_index*3+1],color_tab[color_index*3+2]); /*colors[index_color],colors[index_color+1],colors[index_color+2]);*/
-	//std::cout  << "a : " << std::setw(10)<< a[0]<< std::setw(10) <<" " << a[1] <<" " << std::setw(10)<< a[2] <<"\n";
-	//std::cout  << "b : " << std::setw(10)<< b[0]<< std::setw(10) <<" " << b[1] <<" " << std::setw(10)<< b[2] <<"\n";
-	//std::cout  << "c : " << std::setw(10)<< c[0]<< std::setw(10) <<" " << c[1] <<" " << std::setw(10)<< c[2] <<"\n";
+	Vertex *a = face.v1;
+	Vertex *b = face.v2;
+	Vertex *c = face.v3;
 
-	glVertex3f(a->x,a->y,a->z);
-	glVertex3f(b->x,b->y,b->z);
-	glVertex3f(c->x,c->y,c->z);
+	if(draw_mode == DRAW_MODE::WIREFRAME)
+		glBegin(GL_TRIANGLES);
+	else if(draw_mode == DRAW_MODE::TRIANGLES)
+		glBegin(GL_LINE_LOOP);
+
+	if(smooth_mode == SMOOTH_MODE::NO_SMOOTH)
+	{
+		Vector norm;
+		face.getNormale(norm);
+		glNormal3f(norm[0],norm[1],norm[2]);
+		glVertex3f(a->x,a->y,a->z);
+		glVertex3f(b->x,b->y,b->z);
+		glVertex3f(c->x,c->y,c->z);
+	}else if (smooth_mode == SMOOTH_MODE::SMOOTH)
+	{
+		std::cerr << "smooth mode not yet implemented" << std::endl;
+	}
+
 	glEnd();
-
 	nb_faces += 1;
-	//color_index = (color_index+1)%5;
 }
 
 

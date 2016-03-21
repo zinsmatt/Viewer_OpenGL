@@ -12,9 +12,25 @@
 class GLFWwindow;
 class Mesh;
 class Vertex;
+class Face;
 
 class Viewer
 {
+
+	enum class DRAW_MODE
+	{
+		WIREFRAME,
+		TRIANGLES
+	};
+
+	enum class SMOOTH_MODE
+	{
+		NO_SMOOTH,
+		SMOOTH
+	};
+
+
+
 public:
 	static Viewer* getInstance(int w = 400, int h = 400 , const std::string& name = "Default Name"){
 		if(!instance)
@@ -33,7 +49,7 @@ public:
 
 	bool isClosed() const { return close; }
 
-	void drawFace(Vertex *a, Vertex *b, Vertex *c);
+	void drawFace(Face &face);
 	void drawAxes(float size);
 
 	void setPerspective(float fovy, float ratio, float znear, float zfar);
@@ -53,7 +69,8 @@ private:
 	virtual ~Viewer();
 
 	GLFWwindow *window;
-	int draw_mode;
+	DRAW_MODE draw_mode;
+	SMOOTH_MODE smooth_mode;
 	bool close;
 	int color_index;
 	float color_tab[15];

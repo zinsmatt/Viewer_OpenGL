@@ -42,7 +42,7 @@ void Mesh::draw(Matrixh& transf)
 	for(int iter = 0; iter<faces.size(); ++iter)
 	{
 		Face& face = faces[iter];
-		viewer->drawFace(face.v1, face.v2, face.v3);
+		viewer->drawFace(face);
 	}
 
 	glPopMatrix();
