@@ -19,6 +19,7 @@ public:
 
 	void normalize();
 	Vector operator^(const Vector& v2);
+	void operator *=(double fact);
 
 };
 

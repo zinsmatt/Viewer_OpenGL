@@ -48,7 +48,12 @@ Vector Vector::operator^(const Vector& v2)
 	return resultat;
 }
 
-
+void Vector::operator *=(double fact)
+{
+	values[0] *= fact;
+	values[1] *= fact;
+	values[2] *= fact;
+}
 
 std::ostream& operator<<(std::ostream& o, const Vector& v)
 {

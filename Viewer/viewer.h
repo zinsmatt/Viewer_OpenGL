@@ -29,6 +29,12 @@ class Viewer
 		SMOOTH
 	};
 
+	enum class LIGHTING_MODE
+	{
+		CONSTANT,
+		GOURAUD
+	};
+
 
 
 public:
@@ -71,6 +77,7 @@ private:
 	GLFWwindow *window;
 	DRAW_MODE draw_mode;
 	SMOOTH_MODE smooth_mode;
+	LIGHTING_MODE lighting_mode;
 	bool close;
 	int color_index;
 	float color_tab[15];

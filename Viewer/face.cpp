@@ -9,6 +9,7 @@ Face::Face(Vertex *a, Vertex *b, Vertex *c) : v1(a), v2(b), v3(c)
 	/* the normale is normalized */
 	normale = vector_1^vector_2;
 	normale.normalize();
+	normale *= -1;
 }
 
 Face::~Face()
