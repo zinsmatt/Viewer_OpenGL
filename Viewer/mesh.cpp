@@ -57,10 +57,16 @@ void Mesh::draw3(Matrixh *transf)
 void Mesh::createSphere(int step)
 {
 	coordinates.clear();
-	Point3f a = {0.0f ,1.0f ,0.0f};
-	Point3f b = {-0.75f, -0.5f, -0.43f};
-	Point3f c = { 0.75f, -0.5f, -0.43f};
-	Point3f d = {0.0f, -0.5f, 0.86f};
+
+	//Point3f a = {0.0f ,1.0f ,0.0f};
+	//Point3f b = {-0.75f, -0.5f, -0.43f};
+	//Point3f c = { 0.75f, -0.5f, -0.43f};
+	//Point3f d = {0.0f, -0.5f, 0.86f};
+
+	Point3f a = {0.0f ,0.0f ,1.0f};
+	Point3f b = {0.0f, 0.942809f, -0.333333f};
+	Point3f c = { 0.816497f, -0.471405f, -0.333333f};
+	Point3f d = {-0.816497f, -0.471405f, -0.333333f};
 
 	// callsubdiv
 	subdivideTriangle(a,b,c,step);
