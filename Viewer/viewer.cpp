@@ -131,36 +131,37 @@ Viewer::Viewer(int width, int height, const std::string title) : window(NULL), c
 // ---------------test lighting --------------
 
 
-	GLfloat mat_ambient[] = { 0.1, 0.0, 0.0, 1.0 };
+	GLfloat mat_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
 	GLfloat mat_diffuse[] = { 0.9, 0.2, 0.1, 1.0 };
 	GLfloat mat_specular[] = { 0.9, 0.9, 0.9, 1.0 };
 	GLfloat mat_emission[] = { 0.0, 0.0, 0.0, 0.0};
 
 
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT,mat_ambient);
-	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, mat_diffuse);
-	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, mat_specular);
-	glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, mat_emission);
-    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100.0);
+    glMaterialfv(GL_FRONT, GL_AMBIENT,mat_ambient);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+	glMaterialfv(GL_FRONT, GL_EMISSION, mat_emission);
+    glMaterialf(GL_FRONT, GL_SHININESS, 100.0);
 
 
 	GLfloat light_ambient[] = {0.1,0.1,0.1,1.0};
 	GLfloat light_diffuse[] = {0.9,0.9,0.9,1.0};
 	GLfloat light_specular[] = {0.9,0.9,0.9,1.0};
-	GLfloat light_position[] = {6,6,6,1};
-	GLfloat light_direction[] = {-1,-1,-1,sqrt(3.0)};
+	GLfloat light_position[] = {0,0,100,1};
+	GLfloat light_direction[] = {0,0,-1,1};
 
 
 	glLightfv(GL_LIGHT0,GL_AMBIENT, light_ambient);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
-	glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, 180.0);
+	glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, 60.0);
 	glLightf(GL_LIGHT0, GL_SPOT_EXPONENT, 10);
 	glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, light_direction);
 
 
 	glEnable(GL_LIGHT0);
+	glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER,GL_TRUE);
 
 
 	glfwSetInputMode(window,GLFW_STICKY_KEYS,GL_FALSE);
