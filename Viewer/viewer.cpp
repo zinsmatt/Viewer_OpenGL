@@ -131,17 +131,17 @@ Viewer::Viewer(int width, int height, const std::string title) : window(NULL), c
 // ---------------test lighting --------------
 
 
-	GLfloat mat_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-	GLfloat mat_diffuse[] = { 0.9, 0.2, 0.1, 1.0 };
-	GLfloat mat_specular[] = { 0.9, 0.9, 0.9, 1.0 };
-	GLfloat mat_emission[] = { 0.0, 0.0, 0.0, 0.0};
-
-
-    glMaterialfv(GL_FRONT, GL_AMBIENT,mat_ambient);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
-	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-	glMaterialfv(GL_FRONT, GL_EMISSION, mat_emission);
-    glMaterialf(GL_FRONT, GL_SHININESS, 100.0);
+	//GLfloat mat_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
+	//GLfloat mat_diffuse[] = { 0.9, 0.2, 0.1, 1.0 };
+	//GLfloat mat_specular[] = { 0.9, 0.9, 0.9, 1.0 };
+	//GLfloat mat_emission[] = { 0.0, 0.0, 0.0, 0.0};
+	//
+	//
+    //glMaterialfv(GL_FRONT, GL_AMBIENT,mat_ambient);
+	//glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+	//glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+	//glMaterialfv(GL_FRONT, GL_EMISSION, mat_emission);
+    //glMaterialf(GL_FRONT, GL_SHININESS, 100.0);
 
 
 	GLfloat light_ambient[] = {0.1,0.1,0.1,1.0};

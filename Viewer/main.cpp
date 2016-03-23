@@ -8,6 +8,7 @@
 #include "part.h"
 #include "snowman.h"
 #include "utility.h"
+#include "material.h"
 
 using namespace std;
 
@@ -30,6 +31,7 @@ int main()
 	Part *sphere = manager->newPart(false);
 	sphere->getMesh()->createSphere(5);
 	sphere->setColor(1.0,0.0,0.0);
+	sphere->getMaterial()->setDiffuse(0.0,1.0,1.0,1.0);
 
 	//Mesh *sphereMesh = sphere->getMesh();
 	//
