@@ -33,7 +33,7 @@ void Part::draw(Matrixh mat)
 	if(mesh != NULL)
 	{
 		//glColor3f(color[0],color[1],color[2]);
-		applyMaterial();
+		material->apply();
 		mesh->draw(current);
 	}
 }

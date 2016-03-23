@@ -5,6 +5,7 @@
 #include "partmanager.h"
 #include "utility.h"
 #include "matrixh.h"
+#include "material.h"
 
 SnowMan::SnowMan(int id) : Assembly(id)
 {
@@ -23,6 +24,11 @@ SnowMan::SnowMan(int id) : Assembly(id)
 	bodyPart->getMesh()->createSphere(4);
 	bodyPart->getMatrix()->setScale(2.0,2.0,2.0);
 	bodyPart->setColor(1.0,0.0,0.0);
+	Material* mat = bodyPart->getMaterial();
+	mat->setAmbient(1.0,1.0,1.0,1.0);
+	mat->setDiffuse(1.0,1.0,1.0,1.0);
+	mat->setSpecular(1.0,1.0,1.0,1.0);
+	mat->setShininess(100.0);
 
 	/* buttons parts */
 	// compute transformations matrices
@@ -41,14 +47,17 @@ SnowMan::SnowMan(int id) : Assembly(id)
 	Part *button1 = manager->newPart(true);
 	button1->getMesh()->createSphere(4);
 	button1->setMatrix(matButton1);
+	button1->getMaterial()->setAmbient(0.0,0.0,0.0,1.0);
 
 	Part* button2 = manager->newPart(true);
 	button2->getMesh()->createSphere(4);
 	button2->setMatrix(scaleTrans);
+	button2->getMaterial()->setAmbient(0.0,0.0,0.0,1.0);
 
 	Part *button3 = manager->newPart(true);
 	button3->getMesh()->createSphere(4);
 	button3->setMatrix(matButton3);
+	button3->getMaterial()->setAmbient(0.0,0.0,0.0,1.0);
 
 	/* add body parts into body assembly */
 	body->addSubPart(bodyPart);
@@ -65,6 +74,12 @@ SnowMan::SnowMan(int id) : Assembly(id)
 	Part *headPart = manager->newPart(true);
 	headPart->getMesh()->createSphere(4);
 	headPart->setColor(1.0,0.0,0.0);
+	mat = headPart->getMaterial();
+	mat->setAmbient(1.0,1.0,1.0,1.0);
+	mat->setDiffuse(1.0,1.0,1.0,1.0);
+	mat->setSpecular(1.0,1.0,1.0,1.0);
+	mat->setShininess(100.0);
+
 
 	/* nose part */
 	Part *nose = manager->newPart(true);
@@ -76,6 +91,8 @@ SnowMan::SnowMan(int id) : Assembly(id)
 	Matrixh noseTransf = transl * scale;
 	nose->setMatrix(noseTransf);
 	nose->setColor(1.0,1.0,1.0);
+	nose->getMaterial()->setAmbient(1.0,0.5,0.0,1.0);
+	nose->getMaterial()->setDiffuse(1.0,1.0,1.0,1.0);
 
 	/* hat */
 	Part *hat = manager->newPart(true);
@@ -85,6 +102,7 @@ SnowMan::SnowMan(int id) : Assembly(id)
 	Matrixh hatTransf = transl * scale;
 	hat->setMatrix(hatTransf);
 	hat->setColor(0.0,0.0,1.0);
+	hat->getMaterial()->setAmbient(0.0,0.0,1.0,1.0);
 
 	/* eyes */
 	// compute transformation matrix
@@ -103,12 +121,21 @@ SnowMan::SnowMan(int id) : Assembly(id)
 	rotz.setRotationZ(TO_RADIANS(-25));
 	eye1->setMatrix(rotz * eyeTransf);
 	eye1->setColor(1.0,1.0,1.0);
+	eye1->getMaterial()->setAmbient(0.0,0.0,0.0,1.0);
+	eye1->getMaterial()->setDiffuse(0.0,0,0,1.0);
+	eye1->getMaterial()->setSpecular(0.001,0.001,0.001,1.0);
+	eye1->getMaterial()->setShininess(128);
 
 	Part *eye2 = manager->newPart(true);
 	eye2->getMesh()->createSphere(4);
 	rotz.setRotationZ(TO_RADIANS(25));
 	eye2->setMatrix(rotz * eyeTransf);
 	eye2->setColor(1.0,1.0,1.0);
+	eye2->getMaterial()->setAmbient(0.0,0.0,0.0,1.0);
+	eye2->getMaterial()->setDiffuse(0.0,0.0,0.0,1.0);
+	eye2->getMaterial()->setSpecular(1.0,1.0,1.0,1.0);
+	eye2->getMaterial()->setShininess(128);
+
 
 	/* add parts into head assembly */
 	head->addSubPart(headPart);

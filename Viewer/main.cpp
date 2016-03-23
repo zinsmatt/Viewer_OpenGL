@@ -27,11 +27,19 @@ int main()
 	cube->getMesh()->createCube(1.0,1.0,1.0);
 	cube->setColor(1.0,1.0,0.0);
 	cube->getMatrix()->setTranslation(2,-2,0.0);
+	cube->getMaterial()->setAmbient(0.3,0.2,0.1,1.0);
+	cube->getMaterial()->setDiffuse(0.3,0.2,0.1,1.0);
+
 
 	Part *sphere = manager->newPart(false);
 	sphere->getMesh()->createSphere(5);
 	sphere->setColor(1.0,0.0,0.0);
-	sphere->getMaterial()->setDiffuse(0.0,1.0,1.0,1.0);
+	sphere->getMaterial()->setAmbient(0.0,0.0,0.0,0.0);
+	sphere->getMaterial()->setDiffuse(1.0,0.0,0.0,1.0);
+	sphere->getMaterial()->setSpecular(1.0,1.0,0.0,1.0);
+	sphere->getMaterial()->setEmission(0.0,0.0,0.0,1.0);
+	sphere->getMaterial()->setShininess(128);
+
 
 	//Mesh *sphereMesh = sphere->getMesh();
 	//

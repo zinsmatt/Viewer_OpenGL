@@ -78,6 +78,7 @@ private:
 	DRAW_MODE draw_mode;
 	SMOOTH_MODE smooth_mode;
 	LIGHTING_MODE lighting_mode;
+	bool draw_normals;
 	bool close;
 	int color_index;
 	float color_tab[15];

@@ -14,6 +14,7 @@ public:
 	Face(Vertex *a,Vertex *b,Vertex *c);
 	~Face();
 
+
 	Vertex *v1;
 	Vertex *v2;
 	Vertex *v3;

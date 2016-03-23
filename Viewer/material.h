@@ -13,6 +13,7 @@ private:
 public:
 	Material() ;
 	~Material();
+	void apply() const;
 
 	void setAmbient(float r, float g, float b, float a) { ambient[0]=r; ambient[1]=g; ambient[2]=b; ambient[3]=a; }
 	void setDiffuse(float r, float g, float b, float a) { diffuse[0]=r; diffuse[1]=g; diffuse[2]=b; diffuse[3]=a; }

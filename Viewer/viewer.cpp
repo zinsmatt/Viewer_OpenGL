@@ -18,7 +18,7 @@ Viewer* Viewer::instance = NULL;
 
 
 Viewer::Viewer(int width, int height, const std::string title) : window(NULL), close(false), color_index(0),
-    nb_faces(0), azimut(0.0), elevation(0.0), twist(0.0), distance(0.0),
+    nb_faces(0), azimut(0.0), elevation(0.0), twist(0.0), distance(0.0), draw_normals(false),
     draw_mode(DRAW_MODE::TRIANGLES), smooth_mode(SMOOTH_MODE::NO_SMOOTH), lighting_mode(LIGHTING_MODE::CONSTANT)
 {
 	std::cout << "Constructor !!\n" << std::endl;
@@ -147,7 +147,7 @@ Viewer::Viewer(int width, int height, const std::string title) : window(NULL), c
 	GLfloat light_ambient[] = {0.1,0.1,0.1,1.0};
 	GLfloat light_diffuse[] = {0.9,0.9,0.9,1.0};
 	GLfloat light_specular[] = {0.9,0.9,0.9,1.0};
-	GLfloat light_position[] = {0,0,100,1};
+	GLfloat light_position[] = {0,0,30,1};
 	GLfloat light_direction[] = {0,0,-1,1};
 
 
@@ -334,6 +334,12 @@ void Viewer::key(int key, int scancode, int action, int mods)
 			std::cout << "switch to constant illumination model" << std::endl;
 		}
 	}
+
+	/* n ==> switch draw normals on/off */
+	if(action == GLFW_PRESS && key == GLFW_KEY_N)
+	{
+		draw_normals = !draw_normals;
+	}
 }
 
 void Viewer::drawAxes(float size)
@@ -393,7 +399,16 @@ void Viewer::drawFace(Face& face)
 		glVertex3f(c->x,c->y,c->z);
 	}else if (smooth_mode == SMOOTH_MODE::SMOOTH)
 	{
-		Vector v(a->x,a->y,a->z,1.0);
+		glNormal3f(a->nx,a->ny,a->nz);
+		glVertex3f(a->x,a->y,a->z);
+
+		glNormal3f(b->nx,b->ny,b->nz);
+		glVertex3f(b->x,b->y,b->z);
+
+		glNormal3f(c->nx,c->ny,c->nz);
+		glVertex3f(c->x,c->y,c->z);
+
+		/*Vector v(a->x,a->y,a->z,1.0);
 		v.normalize();
 		glNormal3f(v[0],v[1],v[2]);
 		glVertex3f(a->x,a->y,a->z);
@@ -406,10 +421,42 @@ void Viewer::drawFace(Face& face)
 		v.set(c->x,c->y,c->z,1.0);
 		v.normalize();
 		glNormal3f(v[0],v[1],v[2]);
-		glVertex3f(c->x,c->y,c->z);
+		glVertex3f(c->x,c->y,c->z);*/
 	}
 
 	glEnd();
+
+
+	if( draw_normals == true)
+	{
+		glBegin(GL_LINES);
+		if(smooth_mode==SMOOTH_MODE::NO_SMOOTH)
+		{
+			Vector norm;
+			face.getNormale(norm);
+			glVertex3f(a->x,a->y,a->z);
+			glVertex3f(a->x+norm[0],a->y+norm[1],a->z+norm[2]);
+
+			glVertex3f(b->x,b->y,b->z);
+			glVertex3f(b->x+norm[0],b->y+norm[1],b->z+norm[2]);
+
+			glVertex3f(c->x,c->y,c->z);
+			glVertex3f(c->x+norm[0],c->y+norm[1],c->z+norm[2]);
+		}else if(smooth_mode == SMOOTH_MODE::SMOOTH)
+		{
+			Vector norm;
+			face.getNormale(norm);
+			glVertex3f(a->x,a->y,a->z);
+			glVertex3f(a->x+a->nx,a->y+a->ny,a->z+a->z);
+
+			glVertex3f(b->x,b->y,b->z);
+			glVertex3f(b->x+b->nx,b->y+b->ny,b->z+b->z);
+
+			glVertex3f(c->x,c->y,c->z);
+			glVertex3f(c->x+c->nx,c->y+c->ny,c->z+c->z);
+		}
+		glEnd();
+	}
 	nb_faces += 1;
 }
 
