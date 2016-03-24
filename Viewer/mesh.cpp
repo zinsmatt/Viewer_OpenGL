@@ -160,12 +160,12 @@ void Mesh::createCone(int steps, float height, float radius)
 		x = radius * cos(angle);
 		y = radius * sin(angle);
 		A = newVertex(x,y,0.0);
-		addFace(A,origin,prev_A);
+		addFace(prev_A,origin,A);
 		addFace(A, head, prev_A);
 		angle += increment_angle;
 	}
 	// for the last face we loop to the first
-	addFace(first_vertex,origin,A);
+	addFace(A,origin,first_vertex);
 	addFace(first_vertex,head,A);
 
 	this->computeNormals();

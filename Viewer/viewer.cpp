@@ -430,7 +430,7 @@ void Viewer::drawFace(Face* face)
 	if( draw_normals == true)
 	{
 		glBegin(GL_LINES);
-		if(smooth_mode==SMOOTH_MODE::NO_SMOOTH)
+		if(smooth_mode == SMOOTH_MODE::NO_SMOOTH)
 		{
 			Vector norm;
 			face->getNormale(norm);
@@ -447,13 +447,13 @@ void Viewer::drawFace(Face* face)
 			Vector norm;
 			face->getNormale(norm);
 			glVertex3f(a->x,a->y,a->z);
-			glVertex3f(a->x+a->nx,a->y+a->ny,a->z+a->z);
+			glVertex3f(a->x+a->nx,a->y+a->ny,a->z+a->nz);
 
 			glVertex3f(b->x,b->y,b->z);
-			glVertex3f(b->x+b->nx,b->y+b->ny,b->z+b->z);
+			glVertex3f(b->x+b->nx,b->y+b->ny,b->z+b->nz);
 
 			glVertex3f(c->x,c->y,c->z);
-			glVertex3f(c->x+c->nx,c->y+c->ny,c->z+c->z);
+			glVertex3f(c->x+c->nx,c->y+c->ny,c->z+c->nz);
 		}
 		glEnd();
 	}
