@@ -59,6 +59,13 @@ Vector Vector::operator+(const Vector& v2)
 	return resultat;
 }
 
+Vector Vector::operator+=(const Vector& v2)
+{
+	values[0] += v2.values[0];
+	values[1] += v2.values[1];
+	values[2] += v2.values[2];
+}
+
 void Vector::operator *=(double fact)
 {
 	values[0] *= fact;

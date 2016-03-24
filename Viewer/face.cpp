@@ -9,10 +9,15 @@ Face::Face(Vertex *a, Vertex *b, Vertex *c) : v1(a), v2(b), v3(c)
 	/* face normale*/
 	normale = vector_1^vector_2;
 	normale.normalize();
-	normale *= -1;
+
+	a->addAdjacentFace(this);
+	b->addAdjacentFace(this);
+	c->addAdjacentFace(this);
+
+	//normale *= -1;
 
 	/* vertices normals */
-	Vector na(a->nx,a->ny,a->nz,1.0);
+	/*Vector na(a->nx,a->ny,a->nz,1.0);
 	Vector nouv_na;
 	nouv_na = na+normale;
 	nouv_na.normalize();
@@ -34,7 +39,7 @@ Face::Face(Vertex *a, Vertex *b, Vertex *c) : v1(a), v2(b), v3(c)
 	nouv_nc.normalize();
 	c->nx = nouv_nc[0];
 	c->ny = nouv_nc[1];
-	c->nz = nouv_nc[2];
+	c->nz = nouv_nc[2];*/
 }
 
 Face::~Face()

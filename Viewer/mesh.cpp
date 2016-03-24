@@ -1,5 +1,6 @@
 #include "mesh.h"
 #include "viewer.h"
+#include "face.h"
 #include <iostream>
 #include <GL/glew.h>
 
@@ -12,12 +13,13 @@ Mesh::~Mesh()
 {
 	for(int iter = 0; iter<vertices.size(); ++iter)
 		delete vertices[iter];
+	for(int iter = 0;iter<vertices.size(); ++iter)
+		delete faces[iter];
 }
 
 void Mesh::addFace(Vertex* a, Vertex *b, Vertex *c)
 {	// add a triangle face
-	Face new_face(a,b,c);
-	faces.push_back(std::move(new_face));
+	faces.push_back(new Face(a,b,c));
 }
 
 void Mesh::addSquareFace(Vertex* a, Vertex* b, Vertex *c, Vertex *d)
@@ -33,6 +35,14 @@ Vertex* Mesh::newVertex(float x, float y, float z)
 	return nouv_vertex;
 }
 
+void Mesh::computeNormals()
+{
+	for(int iter = 0; iter < vertices.size(); ++iter)
+	{
+		vertices[iter]->computeNormal();
+	}
+}
+
 void Mesh::draw(Matrixh& transf)
 {
 	glPushMatrix();
@@ -41,7 +51,7 @@ void Mesh::draw(Matrixh& transf)
 	Viewer* viewer = Viewer::getInstance();
 	for(int iter = 0; iter<faces.size(); ++iter)
 	{
-		Face& face = faces[iter];
+		Face* face = faces[iter];
 		viewer->drawFace(face);
 	}
 
@@ -52,7 +62,6 @@ void Mesh::draw3(Matrixh *transf)
 {
 	std::cout << "draw mesh in opengl version 3 " << std::endl;
 }
-
 
 void Mesh::createSphere(int step)
 {
@@ -73,6 +82,8 @@ void Mesh::createSphere(int step)
 	subdivideTriangle(a,c,d,step);
 	subdivideTriangle(a,d,b,step);
 	subdivideTriangle(b,d,c,step);
+
+	this->computeNormals();
 }
 
 void Mesh::subdivideTriangle(Point3f a, Point3f b, Point3f c, int n)
@@ -126,6 +137,8 @@ void Mesh::createCube(float x, float y, float z)
 	this->addSquareFace(e,f,b,a);
 	this->addSquareFace(e,a,d,h);
 	this->addSquareFace(b,f,g,c);
+
+	this->computeNormals();
 }
 
 void Mesh::createCone(int steps, float height, float radius)
@@ -137,10 +150,11 @@ void Mesh::createCone(int steps, float height, float radius)
 
 	Vertex *origin = newVertex(0.0,0.0,0.0);
 	Vertex *A = newVertex(radius,0.0,0.0);
+	Vertex *first_vertex = A;
 	Vertex *prev_A;
 	Vertex *head = newVertex(0.0,0.0,height);
 
-	for(int iter = 0; iter <= steps; iter++)
+	for(int iter = 0; iter < steps-1; iter++)
 	{
 		prev_A = A;
 		x = radius * cos(angle);
@@ -150,4 +164,10 @@ void Mesh::createCone(int steps, float height, float radius)
 		addFace(A, head, prev_A);
 		angle += increment_angle;
 	}
+	// for the last face we loop to the first
+	addFace(first_vertex,origin,A);
+	addFace(first_vertex,head,A);
+
+	this->computeNormals();
 }
+

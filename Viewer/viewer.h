@@ -55,7 +55,7 @@ public:
 
 	bool isClosed() const { return close; }
 
-	void drawFace(Face &face);
+	void drawFace(Face *face);
 	void drawAxes(float size);
 
 	void setPerspective(float fovy, float ratio, float znear, float zfar);

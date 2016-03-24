@@ -378,11 +378,11 @@ void Viewer::clear()
 	glClearColor(0.0f,0.78f,0.5f,1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
-void Viewer::drawFace(Face& face)
+void Viewer::drawFace(Face* face)
 {
-	Vertex *a = face.v1;
-	Vertex *b = face.v2;
-	Vertex *c = face.v3;
+	Vertex *a = face->v1;
+	Vertex *b = face->v2;
+	Vertex *c = face->v3;
 
 	if(draw_mode == DRAW_MODE::WIREFRAME)
 		glBegin(GL_TRIANGLES);
@@ -392,7 +392,7 @@ void Viewer::drawFace(Face& face)
 	if(smooth_mode == SMOOTH_MODE::NO_SMOOTH)
 	{
 		Vector norm;
-		face.getNormale(norm);
+		face->getNormale(norm);
 		glNormal3f(norm[0],norm[1],norm[2]);
 		glVertex3f(a->x,a->y,a->z);
 		glVertex3f(b->x,b->y,b->z);
@@ -433,7 +433,7 @@ void Viewer::drawFace(Face& face)
 		if(smooth_mode==SMOOTH_MODE::NO_SMOOTH)
 		{
 			Vector norm;
-			face.getNormale(norm);
+			face->getNormale(norm);
 			glVertex3f(a->x,a->y,a->z);
 			glVertex3f(a->x+norm[0],a->y+norm[1],a->z+norm[2]);
 
@@ -445,7 +445,7 @@ void Viewer::drawFace(Face& face)
 		}else if(smooth_mode == SMOOTH_MODE::SMOOTH)
 		{
 			Vector norm;
-			face.getNormale(norm);
+			face->getNormale(norm);
 			glVertex3f(a->x,a->y,a->z);
 			glVertex3f(a->x+a->nx,a->y+a->ny,a->z+a->z);
 

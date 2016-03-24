@@ -10,6 +10,7 @@ public:
 	Vector() { values[0] = values[1] = values[2] = values[3] = 0.0; }
 	Vector(const double* v);
 	Vector(double a, double b, double c, double d);
+	Vector(double a, double b, double c) : Vector(a,b,c,1) {}
 	Vector& operator=(const Vector& v);
 	~Vector();
 
@@ -20,6 +21,7 @@ public:
 	void normalize();
 	Vector operator^(const Vector& v2);
 	Vector operator+(const Vector& v2);
+	Vector operator+=(const Vector& v2);
 	void operator *=(double fact);
 
 };
