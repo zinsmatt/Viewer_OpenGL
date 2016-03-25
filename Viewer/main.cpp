@@ -23,7 +23,7 @@ int main()
 	Part* cone = manager->newPart();
 	cone->getMesh()->createCone(6, 2.0);
 	cone->setColor(1.0,1.0,0.0);
-	cone->getMatrix()->setTranslation(3.0,3.0,0.0);
+	cone->getMatrix()->setTranslation(-1.0,3.0,0.0);
 	cone->getMaterial()->setAmbient(0.1,0.4,0.6,1.0);
 	cone->getMaterial()->setDiffuse(0.1,0.4,0.6,1.0);
 	cone->getMaterial()->setSpecular(0.5,0.5,0.5,1.0);

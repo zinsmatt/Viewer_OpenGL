@@ -83,16 +83,18 @@ SnowMan::SnowMan(int id) : Assembly(id)
 
 	/* nose part */
 	Part *nose = manager->newPart(true);
-	nose->getMesh()->createCube();
+	nose->getMesh()->createCone(8,1,1);
 	Matrixh scale;
-	scale.setScale(0.1,0.1,0.1);
+	scale.setScale(0.1,0.1,0.3);
+	Matrixh rotation;
+	rotation.setRotationY(TO_RADIANS(90));
 	Matrixh transl;
 	transl.setTranslation(1.0,0.0,0.0);
-	Matrixh noseTransf = transl * scale;
+	Matrixh noseTransf = transl * rotation * scale;
 	nose->setMatrix(noseTransf);
 	nose->setColor(1.0,1.0,1.0);
-	nose->getMaterial()->setAmbient(1.0,0.5,0.0,1.0);
-	nose->getMaterial()->setDiffuse(1.0,1.0,1.0,1.0);
+	nose->getMaterial()->setAmbient(1.0,0.17,0.0,1.0);
+	nose->getMaterial()->setDiffuse(1.0,0.17,0.0,1.0);
 
 	/* hat */
 	Part *hat = manager->newPart(true);
@@ -103,6 +105,9 @@ SnowMan::SnowMan(int id) : Assembly(id)
 	hat->setMatrix(hatTransf);
 	hat->setColor(0.0,0.0,1.0);
 	hat->getMaterial()->setAmbient(0.0,0.0,1.0,1.0);
+	hat->getMaterial()->setDiffuse(0.0,0.0,1.0,1.0);
+	hat->getMaterial()->setSpecular(0.5,0.5,0.5,1.0);
+	hat->getMaterial()->setShininess(1);
 
 	/* eyes */
 	// compute transformation matrix

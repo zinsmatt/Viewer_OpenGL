@@ -144,10 +144,10 @@ Viewer::Viewer(int width, int height, const std::string title) : window(NULL), c
     //glMaterialf(GL_FRONT, GL_SHININESS, 100.0);
 
 
-	GLfloat light_ambient[] = {0.1,0.1,0.1,1.0};
-	GLfloat light_diffuse[] = {0.9,0.9,0.9,1.0};
-	GLfloat light_specular[] = {0.9,0.9,0.9,1.0};
-	GLfloat light_position[] = {0,0,30,1};
+	GLfloat light_ambient[] =  {0.4,0.4,0.4,1.0};
+	GLfloat light_diffuse[] =  {0.4,0.4,0.4,1.0};
+	GLfloat light_specular[] = {0.4,0.4,0.4,1.0};
+	GLfloat light_position[] = {0,0,50,1};
 	GLfloat light_direction[] = {0,0,-1,1};
 
 
@@ -155,7 +155,7 @@ Viewer::Viewer(int width, int height, const std::string title) : window(NULL), c
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
-	glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, 60.0);
+	glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, 90.0);
 	glLightf(GL_LIGHT0, GL_SPOT_EXPONENT, 10);
 	glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, light_direction);
 
@@ -238,7 +238,7 @@ void Viewer::polarView(float distance, float azimut, float elevation, float twis
 	this->twist = twist;
 	this->distance = distance;
 	// angles given in degrees
-	glMatrixMode(GL_MODELVIEW_MATRIX);
+	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
 	glRotatef(twist,0,0,1);
@@ -344,6 +344,7 @@ void Viewer::key(int key, int scancode, int action, int mods)
 
 void Viewer::drawAxes(float size)
 {
+	glDisable(GL_LIGHTING);
 	glBegin(GL_LINES);
 	glColor3f(1.0,0.0,0.0);
 	glVertex3f(size,0.0,0.0);
@@ -355,6 +356,7 @@ void Viewer::drawAxes(float size)
 	glVertex3f(0.0,0.0,size);
 	glVertex3f(0.0,0.0,0.0);
 	glEnd();
+	glEnable(GL_LIGHTING);
 }
 
 void Viewer::update()
