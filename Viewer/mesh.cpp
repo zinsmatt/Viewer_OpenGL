@@ -80,10 +80,10 @@ void Mesh::createSphere(int step)
 	Point3f d = {-0.816497f, -0.471405f, -0.333333f};
 
 	// callsubdiv
-	subdivideTriangle(a,b,c,step);
-	subdivideTriangle(a,c,d,step);
-	subdivideTriangle(a,d,b,step);
-	subdivideTriangle(b,d,c,step);
+	subdivideTriangle(a,c,b,step);
+	subdivideTriangle(a,b,d,step);
+	subdivideTriangle(a,d,c,step);
+	subdivideTriangle(b,c,d,step);
 
 	this->computeNormals();
 }
