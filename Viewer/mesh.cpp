@@ -22,10 +22,12 @@ void Mesh::addFace(Vertex* a, Vertex *b, Vertex *c)
 	faces.push_back(new Face(a,b,c));
 }
 
-void Mesh::addSquareFace(Vertex* a, Vertex* b, Vertex *c, Vertex *d)
-{	// add a square face decomposed in two triangles
-	addFace(a,b,c);
-	addFace(c,d,a);
+void Mesh::addSquareFace(Vertex* a, Vertex* b, Vertex *c, Vertex *d, Vertex *center)
+{	// add a square face decomposed in 4 triangles (a,b,c,d) in trigonometric order
+	addFace(a,b,center);
+	addFace(b,c,center);
+	addFace(c,d,center);
+	addFace(d,a,center);
 }
 
 Vertex* Mesh::newVertex(float x, float y, float z)
@@ -131,12 +133,19 @@ void Mesh::createCube(float x, float y, float z)
 	Vertex *g = newVertex( x,-y,-z);
 	Vertex *h = newVertex( x,-y, z);
 
-	this->addSquareFace(a,b,c,d);
-	this->addSquareFace(d,c,g,h);
-	this->addSquareFace(h,g,f,e);
-	this->addSquareFace(e,f,b,a);
-	this->addSquareFace(e,a,d,h);
-	this->addSquareFace(b,f,g,c);
+	Vertex *adcb = newVertex(0,y,0);
+	Vertex *hgcd = newVertex(x,0,0);
+	Vertex *hefg = newVertex(0,-y,0);
+	Vertex *eabf = newVertex(-x,0,0);
+	Vertex *aehd = newVertex(0,0,z);
+	Vertex *cgfb = newVertex(0,0,-z);
+
+	this->addSquareFace(a,d,c,b,adcb);
+	this->addSquareFace(h,g,c,d,hgcd);
+	this->addSquareFace(h,e,f,g,hefg);
+	this->addSquareFace(e,a,b,f,eabf);
+	this->addSquareFace(a,e,h,d,aehd);
+	this->addSquareFace(c,g,f,b,cgfb);
 
 	this->computeNormals();
 }

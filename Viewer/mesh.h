@@ -23,7 +23,7 @@ public:
 	int getNbFaces() const { return (float)coordinates.size()/9; }
 
 	void addFace(Vertex *a, Vertex *b, Vertex *c);
-	void addSquareFace(Vertex *a, Vertex *b, Vertex *c, Vertex *d);
+	void addSquareFace(Vertex *a, Vertex *b, Vertex *c, Vertex *d, Vertex *center);
 
 	Vertex* newVertex(float x, float y, float z);
 	void computeNormals();
