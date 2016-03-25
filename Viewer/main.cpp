@@ -88,7 +88,7 @@ int main()
 	}*/
 
 
-	//MeshManager::freeInstance();
+	MeshManager::freeInstance();
 	PartManager::freeInstance();
 	Viewer::freeInstace();
 	Viewer3::freeInstace();
