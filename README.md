@@ -2,9 +2,12 @@
 OpenGL Viewer
 
 
+####Wireframe
+![alt tag](wireframe.png?raw=true "3D Viewer - Wireframe")
+
+####Flat
+![alt tag](flat.png?raw=true "3D Viewer - Flat")
+
+
 ####Smooth
-![alt tag](screenshot_smooth.png?raw=true "3D Viewer")
-
-
-####No Smooth
-![alt tag](screenshot.png?raw=true "3D Viewer")
+![alt tag](smooth.png?raw=true "3D Viewer - Smooth")
