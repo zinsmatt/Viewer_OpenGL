@@ -259,6 +259,18 @@ void Viewer::polarView(float distance, float azimut, float elevation, float twis
 	}
 }
 
+void Viewer::translateCamera(float x, float y, float z)
+{
+	//need to add a scene matrix which contains [ translation polarView]
+	// need to mult at left -> save current matrix
+	glMatrixMode(GL_MODELVIEW);
+	float temp[16];
+	glGetFloatv(GL_MODELVIEW_MATRIX,temp);
+	glLoadIdentity();
+	glTranslatef(x,y,z);
+	glMultMatrixf(temp);
+}
+
 void Viewer::reshape(int width, int height)
 {
 	std::cout << "Reshape \n";
@@ -302,7 +314,7 @@ void Viewer::key(int key, int scancode, int action, int mods)
 
 
 	/* w ==> switch draw_mode : wireframe <-> triangles */
-	if(action == GLFW_PRESS && key == GLFW_KEY_Z)
+	if(action == GLFW_PRESS  && key == GLFW_KEY_Z)
 	{
 		if(draw_mode == DRAW_MODE::WIREFRAME)
 			draw_mode = DRAW_MODE::TRIANGLES;
@@ -339,6 +351,24 @@ void Viewer::key(int key, int scancode, int action, int mods)
 	if(action == GLFW_PRESS && key == GLFW_KEY_N)
 	{
 		draw_normals = !draw_normals;
+	}
+
+	/* keypad 5,2,1,3 ==> control camera translation */
+	if(action == GLFW_PRESS|| action == GLFW_REPEAT)
+	{
+		if(key == GLFW_KEY_KP_5)
+		{
+			translateCamera(0.0,1.0,0.0);
+		}else if(key == GLFW_KEY_KP_2)
+		{
+			translateCamera(0.0,-1.0,0.0);
+		}else if(key == GLFW_KEY_KP_1)
+		{
+			translateCamera(-1.0,0.0,0.0);
+		}else if(key == GLFW_KEY_KP_3)
+		{
+			translateCamera(1.0,0.0,0.0);
+		}
 	}
 }
 

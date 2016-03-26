@@ -60,7 +60,7 @@ public:
 
 	void setPerspective(float fovy, float ratio, float znear, float zfar);
 	void polarView(float distance, float azimut, float elevation, float twist);
-
+	void translateCamera(float x, float y, float z);
 	void reshape(int width, int height);
 	void zoom(double x, double y);
 	void mouse_button(int button, int action, int mods);
